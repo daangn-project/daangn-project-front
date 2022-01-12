@@ -37,7 +37,7 @@ const Header = () => {
                                 <span className='button-text'>당근채팅</span>
                             </button>
                         </Link>
-                        <Link to="/">
+                        <Link to="/login">
                             <button className='fixed-bar-button'>
                                 <span className='button-text'>로그인</span>
                             </button>
