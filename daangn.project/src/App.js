@@ -3,8 +3,9 @@ import {
   Route,
   Routes,
 } from "react-router-dom";
-import Home from "./Home";
-import Login from "./components/Login";
+import Home from "./pages/home";
+import Login from "./pages/login";
+import MarketPlace from "./pages/marketplace";
 
 
 function App() {
@@ -13,6 +14,7 @@ function App() {
     <Routes>
       <Route path='/' element={<Home/>}></Route>
       <Route path='/login' element={<Login/>}></Route>
+      <Route path='/marketplace' element={<MarketPlace/>}></Route>
     </Routes>
   </Router>
 
