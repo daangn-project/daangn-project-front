@@ -8,7 +8,7 @@ const ItemPostCard= () => {
     return (
         <Link to={buildProductDetailsUrl("상품1")}>
         <div className="card card-common">
-        <div className="cart-imgbox">
+        <div className="card-imgbox">
           <Link to={buildProductDetailsUrl("상품1")}>
             <img src="https://images.unsplash.com/photo-1642156205878-6a28a2d8b5bb?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=987&q=80" 
             />
