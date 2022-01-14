@@ -11,7 +11,7 @@ const ItemPostCard= () => {
         <div className="cart-imgbox">
           <Link to={buildProductDetailsUrl("상품1")}>
             <img src="https://images.unsplash.com/photo-1642156205878-6a28a2d8b5bb?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=987&q=80" 
-            style={{width:'300px',height:'100px'}}/>
+            />
           </Link>
         </div>
         <div className="card-body card-mediabody">
@@ -19,18 +19,9 @@ const ItemPostCard= () => {
           <Row className="d-flex justify-content-between">
             <Col xs="9">
               <Card.Text>
-                <Image
-                  src="https://images.unsplash.com/photo-1642156205878-6a28a2d8b5bb?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=987&q=80"
-                  className="me-2"
-                  style={{ width: '32px', height: '32px' }}
-                  roundedCircle
-                />
-                <Link
-                  to={buildProductDetailsUrl("사용자1")}
-                  style={{ textDecoration: 'none', color: 'black' }}
-                >
-                  @사용자1
-                </Link>
+              <a>
+                 10,000원
+              </a>
               </Card.Text>
             </Col>
           </Row>
@@ -38,10 +29,10 @@ const ItemPostCard= () => {
         <div className="card-body card-bodyinfo d-flex align-items-center border-bottom">
           <div className="pe-3 w-80">
             <div className="d-flex align-items-center justify-content-between">
-              <h4>
-                KRW{' '}
-                 10,000원
-              </h4>
+              <a> 서울시 마포구 성산2동</a>
+            </div>
+            <div>
+                관심 58 채팅 21
             </div>
           </div>
             </div>
