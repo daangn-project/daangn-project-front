@@ -1,3 +1,3 @@
 export function buildProductDetailsUrl(productId) {
-    return `/itempost?Id=${productId}`;
+    return `/item-posts/${productId}`;
   }

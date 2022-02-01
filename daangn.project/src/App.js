@@ -5,8 +5,9 @@ import {
 } from "react-router-dom";
 import Home from "./pages/home";
 import Login from "./pages/login";
-import MarketPlace from "./pages/marketplace";
-import ItemPostCreate from "./itemPostCreate";
+import ItemPostMain from "./pages/marketplace/ItemPostMain";
+import ItemPostCreate from "./pages/marketplace/itemPostCreate";
+import ItemPostDetail from "./pages/marketplace/ItemPostDetail";
 
 function App() {
   return (
@@ -14,15 +15,11 @@ function App() {
     <Routes>
       <Route path='/' element={<Home/>}></Route>
       <Route path='/login' element={<Login/>}></Route>
-      <Route path='/marketplace' element={<MarketPlace/>}></Route>
+      <Route path='/marketplace' element={<ItemPostMain/>}></Route>
       <Route path='/new-itemposts' element={<ItemPostCreate/>}></Route>
+      <Route path='/item-posts/:id' element={<ItemPostDetail/>}></Route>
     </Routes>
   </Router>
-
-
-
-
-
   )
  };
 
