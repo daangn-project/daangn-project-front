@@ -1,4 +1,5 @@
 import { Link } from 'react-router-dom';
+import MenuBtn from './MenuBtn';
 
 const Header = () => {
     return (
@@ -36,21 +37,9 @@ const Header = () => {
 
                 <section className="fixed-bar-menu">
                     <div>
-                        <Link to="/marketplace">
-                            <button className="fixed-bar-button">
-                                <span className="button-text">동네장터</span>
-                            </button>
-                        </Link>
-                        <Link to="/">
-                            <button className="fixed-bar-button">
-                                <span className="button-text">커뮤니티</span>
-                            </button>
-                        </Link>
-                        <Link to="/">
-                            <button className="fixed-bar-button">
-                                <span className="button-text">당근채팅</span>
-                            </button>
-                        </Link>
+                        <Link to="/marketplace"><MenuBtn text="동네장터"/></Link>
+                        <Link to="/"><MenuBtn text="동네생활"/></Link>
+                        <Link to="/"><MenuBtn text="당근채팅"/></Link>
                         <Link to="/login">
                             <button className="fixed-bar-button">
                                 <span className="button-text">로그인</span>

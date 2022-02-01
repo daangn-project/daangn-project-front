@@ -6,26 +6,17 @@ const ItemPostContainer = () => {
         <div className="container-xxl mb-3">
           <div className=" row mb-3 justify-content-end">
           </div>
-          <div className="d-none row mb-3 justify-content-end">
-            <div className="col sort-criteria d-flex justify-content-end">
-              <span className="pt-1">        
-              </span>
-            </div>
-          </div>
-                    <div className="row row-cols-1 row-cols-lg-2 row-cols-xxl-3 row-cols-xxl-4 gy-5" >
-                      <ItemPostCard/>
-                      <ItemPostCard/>
-                      <ItemPostCard/>
-                      <ItemPostCard/>
-                      <ItemPostCard/>
-                      <ItemPostCard/>
-                      <ItemPostCard/>
-                      <ItemPostCard/>
-                    </div>
-                  
-        
-      
 
+          <div className="row row-cols-1 row-cols-lg-2 row-cols-xxl-3 row-cols-xxl-4 gy-5" >
+            <ItemPostCard/>
+            <ItemPostCard/>
+            <ItemPostCard/>
+            <ItemPostCard/>
+            <ItemPostCard/>
+            <ItemPostCard/>
+            <ItemPostCard/>
+            <ItemPostCard/>
+          </div>
         </div>
       </section>
     )
