@@ -208,17 +208,38 @@ input textarea {
   background-color: #E6F3E6;
 }
 
+.background-pale-peach{
+  background-color: #FBF7F2;
+}
+
 .home-main-content{
   display: flex;
   align-items: center;
 }
 
- .home-main-image{
+ .home-main-image-1{
+  display: inline-block;
+  background: #FBF7F2 url(https://d1unjqcospf8gs.cloudfront.net/assets/home/main/3x/image-top-68ba12f0da7b5af9a574ed92ca8b3a9c0068db176b566dd374ee50359693358b.png) no-repeat;
+  right: -84px;
+  width: 804px;
+  height: 680px;
+  background-size: 804px 685px;
+}
+
+.home-main-image-2{
+  display: inline-block;
+  background-image: url(https://d1unjqcospf8gs.cloudfront.net/assets/home/main/3x/image-1-39ac203e8922f615aa3843337871cb654b81269e872494128bf08236157c5f6a.png);
+  width: 546px;
+  height: 680px;
+  background-size: 546px 700px;
+}
+
+.home-main-image-3{
   display: inline-block;
   background-image: url(https://d1unjqcospf8gs.cloudfront.net/assets/home/main/3x/image-2-f286322ab98acedf914a05bf77e84c67dcb897c8ccb543e66f6afea9d366d06d.png);
   width: 546px;
-  height: 700px;
-  background-size: 546px 740px;
+  height: 680px;
+  background-size: 546px 700px;
 }
 
 .home-main-section .home-main-content{
