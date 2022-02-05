@@ -31,7 +31,7 @@ const ItemPostMain = () => {
                 <div className="item-list">
                     <ul>
                         {itemPosts.map((itemPost) => 
-                            <ItemPostCard id={itemPost.id} writer={itemPost.writer} title={itemPost.title} price={itemPost.price} description={itemPost.description}
+                            <ItemPostCard key={itemPost} id={itemPost.id} writer={itemPost.writer} title={itemPost.title} price={itemPost.price} description={itemPost.description}
                         />)}
                     </ul>
                 </div>

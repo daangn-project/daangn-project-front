@@ -617,3 +617,13 @@ input textarea {
  appearance: none;
 }
 
+
+
+
+
+
+/* 상세 페이지*/
+.item-detail-pic{
+  width: 500px;
+  height: 400px;
+}
