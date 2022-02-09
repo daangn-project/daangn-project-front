@@ -412,12 +412,12 @@ input textarea {
   float: left;
   padding: 10px 10px 10px 10px;
   width: 216px;
+  box-sizing: content-box;
 }
 
 .card{
   color:black;
 }
-
 
 .card-common {
   height: 350px;  
@@ -450,6 +450,14 @@ input textarea {
   transition: 800ms ease;
 }
 
+.card-info-bottom{
+  display: flex;
+  justify-content: space-between;
+}
+
+.card-body{
+  padding: 1rem 1rem 0rem 1rem;
+}
 
 
 /* 글 작성하기 */

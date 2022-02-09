@@ -27,11 +27,13 @@ const ItemPostMain = () => {
         <>
             <Header/>
             <section className="home-main-section ">
-                <div className="category-header">카테고리 헤더 공간</div>
+                <div className="category-header">
+                    <h2 className="category-header-title">창천동</h2>
+                </div>
                 <div className="item-list">
                     <ul>
                         {itemPosts.map((itemPost) => 
-                            <ItemPostCard key={itemPost} id={itemPost.id} writer={itemPost.writer} title={itemPost.title} price={itemPost.price} description={itemPost.description}
+                            <ItemPostCard key={itemPost} id={itemPost.id} writer={itemPost.writer} title={itemPost.title} price={itemPost.price} time = {itemPost.adjustedCreatedDate} description={itemPost.description} thumbnailImg={itemPost.thumbnailImg}
                         />)}
                     </ul>
                 </div>
