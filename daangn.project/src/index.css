@@ -172,31 +172,29 @@ input textarea {
   cursor: pointer;
 }
 
-#fixed-bar #fixed-bar-wrap .fixed-bar-menu .fixed-bar-button{
-  margin: 0;
-  width: 100px;
-  height: 40px;
-  border: 1px solid #D1D3D8;
-  box-sizing: border-box;
-  border-radius: 6px;
-  font-size: 0;
-}
-
-#fixed-bar #fixed-bar-wrap .fixed-bar-menu .fixed-bar-button span.button-text{
-  color: #4D5159;
+.fixed-bar-button{
   font-size: 16px;
-  
-}
-
-#fixed-bar #fixed-bar-wrap .fixed-bar-menu .fixed-bar-button span{
+  background-color: white;
+  width: 80px;
+  height: 40px;
+  border: 1px solid white;
+  border-radius: 10px;
+  margin-left: 5px;
+  line-height: 40px;
+  color: #4a4a4a;
   font-style: normal;
   font-weight: bold;
-  vertical-align: middle;
+  transition: all 0.2s;
 }
 
-.fixed-bar-button{
-  background-color: white;
+.fixed-bar-button:focus{
+  outline: none;
 }
+
+.fixed-bar-button:hover{
+  color: #FF8A3D;
+}
+
 
 
 /* 홈 화면 */
@@ -388,12 +386,25 @@ input textarea {
 
 /* 상품 카드 */
 .item-list{
+  display: flex;
+  align-items: center;
+  justify-content: center;
   width: 1024px;
   position: relative;
   padding-top: 20px;
   padding: 0 0 0 20px;
   margin: 0 auto;
 }
+
+.category-header{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width:1024px;
+  padding-top: 20px;
+  margin: 0 auto;
+}
+
 
 
 .baby-product{
