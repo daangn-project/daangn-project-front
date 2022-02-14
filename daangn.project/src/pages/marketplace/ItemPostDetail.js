@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import "react-responsive-carousel/lib/styles/carousel.min.css"; // requires a loader
 import { Carousel } from 'react-responsive-carousel';
+import Header from "../../components/Header";
 const ItemPostDetail = () => {
     const [detail, setDetail] = useState({});
     const [loading, setLoading] = useState(true);
@@ -23,37 +24,55 @@ const ItemPostDetail = () => {
     useEffect(() => {
         getPageInfo(`http://localhost:8080/item-posts/${id}`);
     }, [])
-    console.log(detail)
 
     return (
         <>
-            <h2>게시물 상세정보</h2>
-            <Carousel
-                autoPlay={true}
-                showArrows={true}
-                infiniteLoop={true}
-                stopOnHover={false}
-                showThumbs={false}
-                showStatus={false}
-                showIndicators={true}
-            >
-            {detail.imageUrls && detail.imageUrls.map((url) => <div className="item-detail-pic" key="url"><img src = {url} alt="pic"></img></div>)}
-            </Carousel>
-            <div>
-                id: {detail.id}
-            </div>
-            <div>
-                member: {detail.member}
-            </div>
-            <div>
-                title: {detail.title}
-            </div>
-            <div>
-                description: {detail.description}
-            </div>
-            <div>
-                카테고리: {detail.itemCategory}
-            </div>
+            <Header/>
+            <section className="wrap">
+                <h2>게시물 상세정보</h2>
+                <div className="item-detail">
+                    <div className="item-pic">
+                        <Carousel
+                            autoPlay={false}
+                            showArrows={true}
+                            infiniteLoop={true}
+                            stopOnHover={false}
+                            showThumbs={true}
+                            showStatus={false}
+                            showIndicators={true}
+                        >
+                        {detail.imageUrls && detail.imageUrls.map((url) => <div key="url"><img src = {url} alt="pic"></img></div>)}
+                        </Carousel>
+                    </div>
+                    <div className="item-descrption-box">
+                        <div className="member">
+                            <div className="profile">
+                                <div className="member-pic"><img src = "https://d1unjqcospf8gs.cloudfront.net/assets/users/default_profile_80-7e50c459a71e0e88c474406a45bbbdce8a3bf2ed4f2efcae59a064e39ea9ff30.png" alt={detail.writer}></img></div>
+                                <div>
+                                    <div>{detail.writer}</div>
+                                    <div>서울시 서대문구</div>
+                                </div>
+                            </div>
+                            <div>채팅</div>
+                        </div>
+                        <div className="title"><h2>{detail.title}</h2></div>
+                        <div className="category"><span>{detail.itemCategory}</span></div>
+                        <div className="price"><span>{detail.price}원</span></div>
+                        <div className="description"><p>{detail.description}</p></div>
+                        <div className="options">
+                            <p>관심 5 조회 5 채팅 1</p>
+                        </div>
+                    </div>
+                </div>
+
+            </section>
+            <section className="more">
+                <hr className="hr-more"/>
+                <div className="other-item">
+                    <h2>{detail.writer}님의 판매 상품</h2>
+                </div>
+            </section>
+            
         </>
     )
 }
