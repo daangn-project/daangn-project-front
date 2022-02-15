@@ -4,14 +4,15 @@ import {
   } from '../../common/url-utils';
   import { Link } from 'react-router-dom';
 
-const ItemPostCard= ({id, writer, title, location, description, time, price, chat, heart}) => {
-    return (
+const ItemPostCard= (props) => {
+  const {id, writer, title, location, description, time, price, thumbnailImg, chat, heart} = props;  
+  return (
       <li className='baby-product'>
         <Link to={buildProductDetailsUrl(id)}>
           <div className="card card-common">
             <div className="card-imgbox">
               <Link to={buildProductDetailsUrl(id)}>
-                <img src="https://images.unsplash.com/photo-1642156205878-6a28a2d8b5bb?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=987&q=80" alt={id} />
+                <img src={thumbnailImg} alt={id} />
               </Link>
             </div>
             <div className="card-body card-mediabody">
@@ -19,27 +20,32 @@ const ItemPostCard= ({id, writer, title, location, description, time, price, cha
               <Row className="d-flex justify-content-between">
                 <Col xs="9">
                   <Card.Text>
-                  <span>
-                    {description}
-                  </span>
-                  <span>
-                    {price ? price : "가격 협의"}
-                  </span>
+                    <div>
+                      <span>{description}</span>
+                    </div>
+                    <div>
+                      <span>{price ? price + "원" : "가격 협의"}</span>
+                    </div>
                   </Card.Text>
                 </Col>
               </Row>
             </div>
-            <div className="card-body card-bodyinfo d-flex align-items-center border-bottom">
+            <div className="card-body">
               <div className="pe-3 w-80">
-                <div className="d-flex align-items-center justify-content-between">
+                <div>
                   <span> 서울시 마포구 성산2동</span>
                 </div>
-                <div>
-                  <span> 작성자: {writer}</span>
+
+                <div className="card-info-bottom">
+                  <div>
+                    <span> 작성자: {writer}</span>
+                  </div>
+                  <div>
+                    <span> 관심: 10</span>
+                    <span> 채팅: 0</span>
+                  </div>
                 </div>
-                <div>
-                    관심 58 채팅 21
-                </div>
+                {time}
               </div>
             </div>
           </div>

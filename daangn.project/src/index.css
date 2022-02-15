@@ -15,6 +15,7 @@ li{
   display: list-item;
   text-align: -webkit-match-parent;
 }
+
 section, article, aside, footer, header, nav, hgroup{
   display: block;
 }
@@ -172,30 +173,71 @@ input textarea {
   cursor: pointer;
 }
 
-#fixed-bar #fixed-bar-wrap .fixed-bar-menu .fixed-bar-button{
-  margin: 0;
-  width: 100px;
-  height: 40px;
-  border: 1px solid #D1D3D8;
-  box-sizing: border-box;
-  border-radius: 6px;
-  font-size: 0;
-}
-
-#fixed-bar #fixed-bar-wrap .fixed-bar-menu .fixed-bar-button span.button-text{
-  color: #4D5159;
+.fixed-bar-button{
   font-size: 16px;
-  
-}
-
-#fixed-bar #fixed-bar-wrap .fixed-bar-menu .fixed-bar-button span{
+  background-color: white;
+  width: 80px;
+  height: 40px;
+  border: 1px solid white;
+  border-radius: 10px;
+  margin-left: 5px;
+  line-height: 40px;
+  color: #4a4a4a;
   font-style: normal;
   font-weight: bold;
-  vertical-align: middle;
+  transition: all 0.2s;
 }
 
-.fixed-bar-button{
-  background-color: white;
+.fixed-bar-button:focus{
+  outline: none;
+}
+
+.fixed-bar-button:hover{
+  color: #FF8A3D;
+}
+
+
+/* 공통 */
+.wrap{
+  min-height: 720px;
+  width: 980px;
+  margin: 0 auto;
+  padding: 100px 20px 0px 0px;
+  max-width: 1024px;
+}
+
+.more{
+  width: 980px;
+  min-height: 200px;
+  width: 100%;
+}
+
+.other-item{
+  width: 1024px;
+  margin: 0 auto;
+  padding: 16px 0;
+  position: relative;
+}
+
+.hr-more{
+  overflow: visible;
+  border-image: initial;
+  border-top: 1px solid rgb(196, 196, 196);
+  color: rgb(196, 196, 196);
+  text-align: center;
+  letter-spacing: 0.045em;
+}
+
+.hr-more::after{
+  position: relative;
+  top: -10px;
+  padding: 10px 20px;
+  background: rgb(255, 255, 255);
+  font-size: 12px;
+  color: rgb(128, 128, 128);
+  text-align: center;
+  line-height: 1.5;
+  content: "MORE";
 }
 
 
@@ -208,17 +250,38 @@ input textarea {
   background-color: #E6F3E6;
 }
 
+.background-pale-peach{
+  background-color: #FBF7F2;
+}
+
 .home-main-content{
   display: flex;
   align-items: center;
 }
 
- .home-main-image{
+ .home-main-image-1{
+  display: inline-block;
+  background: #FBF7F2 url(https://d1unjqcospf8gs.cloudfront.net/assets/home/main/3x/image-top-68ba12f0da7b5af9a574ed92ca8b3a9c0068db176b566dd374ee50359693358b.png) no-repeat;
+  right: -84px;
+  width: 804px;
+  height: 680px;
+  background-size: 804px 685px;
+}
+
+.home-main-image-2{
+  display: inline-block;
+  background-image: url(https://d1unjqcospf8gs.cloudfront.net/assets/home/main/3x/image-1-39ac203e8922f615aa3843337871cb654b81269e872494128bf08236157c5f6a.png);
+  width: 546px;
+  height: 680px;
+  background-size: 546px 700px;
+}
+
+.home-main-image-3{
   display: inline-block;
   background-image: url(https://d1unjqcospf8gs.cloudfront.net/assets/home/main/3x/image-2-f286322ab98acedf914a05bf77e84c67dcb897c8ccb543e66f6afea9d366d06d.png);
   width: 546px;
-  height: 700px;
-  background-size: 546px 740px;
+  height: 680px;
+  background-size: 546px 700px;
 }
 
 .home-main-section .home-main-content{
@@ -367,6 +430,9 @@ input textarea {
 
 /* 상품 카드 */
 .item-list{
+  display: flex;
+  align-items: center;
+  justify-content: center;
   width: 1024px;
   position: relative;
   padding-top: 20px;
@@ -374,18 +440,28 @@ input textarea {
   margin: 0 auto;
 }
 
+.category-header{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width:1024px;
+  padding-top: 20px;
+  margin: 0 auto;
+}
+
+
 
 .baby-product{
   position: relative;
   float: left;
   padding: 10px 10px 10px 10px;
   width: 216px;
+  box-sizing: content-box;
 }
 
 .card{
   color:black;
 }
-
 
 .card-common {
   height: 350px;  
@@ -418,6 +494,14 @@ input textarea {
   transition: 800ms ease;
 }
 
+.card-info-bottom{
+  display: flex;
+  justify-content: space-between;
+}
+
+.card-body{
+  padding: 1rem 1rem 0rem 1rem;
+}
 
 
 /* 글 작성하기 */
@@ -596,3 +680,101 @@ input textarea {
  appearance: none;
 }
 
+
+
+/* 상세 페이지*/
+.item-pic{
+  width: 450px;
+  height: 350px;
+  position: relative;
+  float: left;
+  text-align: center;
+}
+
+.item-detail{
+  display: flex;
+  margin-top: 10px;
+  min-height: 550px;
+}
+
+.item-descrption-box{
+  border-left: solid 1px #e9ecef;
+  margin-left: 40px;
+  padding: 10px 0 20px 20px;
+  position: relative;
+  float: right;
+  width: 450px;
+  font-size: 12px;
+}
+
+.item-descrption-box .member{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 15px;
+}
+
+.profile{
+  display: flex;
+  align-items: center;
+}
+
+.profile > div > img{
+  width: 40px;
+  height: 40px;
+  object-fit: cover;
+  border-radius: 50%;
+  margin-right: 10px;
+}
+
+
+
+.item-descrption-box .title{
+  font-size: 18px;
+  font-weight: bold;
+  width: 380px;
+}
+
+.item-descrption-box .category{
+  margin-top: 4px;
+  font-size: 13px;
+  line-height: 1.46;
+  letter-spacing: -0.6px;
+  color: #868e96;
+}
+
+.item-descrption-box .price{
+  margin-top: 4px;
+  font-size: 17px;
+  font-weight: 600;
+  line-height: 1.76;
+  letter-spacing: -0.6px;
+}
+
+.item-descrption-box .description{
+  margin-bottom: 16px;
+  margin-top: 8px;
+}
+
+.item-descrption-box .description p{
+  font-size: 17px;
+  line-height: 1.6;
+  letter-spacing: -0.6px;
+  margin: 16px 0;
+  word-break: break-all;
+}
+
+.item-descrption-box .options p{
+  font-size: 13px;
+  line-height: 1.46;
+  letter-spacing: -0.6px;
+  color: #868e96;
+}
+
+
+.item-more{
+  width: 677px;
+  margin: 0 auto;
+  padding-top: 32px;
+  position: relative;
+}
