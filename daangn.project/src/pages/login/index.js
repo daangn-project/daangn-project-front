@@ -23,7 +23,6 @@ const Login = () => {
         })
     }
 
-
     return (
         <div className='login-wrapper'>
             <div className='login-container'>
@@ -42,6 +41,8 @@ const Login = () => {
                             <Link to="#" id="id-search">아이디 찾기</Link>
                             <span></span>
                             <Link to="#" id="pw-search">비밀번호 찾기</Link>
+                            <span></span>
+                            <Link to="/signup" id="pw-search">회원가입</Link>
                         </div>
                     </div>
                     <div className='social-login'>

@@ -8,6 +8,7 @@ import Login from "./pages/login";
 import ItemPostMain from "./pages/marketplace/ItemPostMain";
 import ItemPostCreate from "./pages/marketplace/itemPostCreate";
 import ItemPostDetail from "./pages/marketplace/ItemPostDetail";
+import SignUp from "./pages/signup";
 
 function App() {
   return (
@@ -18,6 +19,7 @@ function App() {
       <Route path='/marketplace' element={<ItemPostMain/>}></Route>
       <Route path='/new-itemposts' element={<ItemPostCreate/>}></Route>
       <Route path='/item-posts/:id' element={<ItemPostDetail/>}></Route>
+      <Route path='/signup' element={<SignUp/>}></Route>
     </Routes>
   </Router>
   )
