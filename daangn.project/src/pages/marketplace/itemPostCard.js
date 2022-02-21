@@ -37,9 +37,11 @@ const ItemPostCard= (props) => {
                 </div>
 
                 <div className="card-info-bottom">
+                  {writer && 
                   <div>
                     <span> 작성자: {writer}</span>
                   </div>
+                  }
                   <div>
                     <span> 관심: 10</span>
                     <span> 채팅: 0</span>
