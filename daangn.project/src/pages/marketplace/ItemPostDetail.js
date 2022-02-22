@@ -8,6 +8,7 @@ const ItemPostDetail = () => {
     const [itemDetail, setItemDetail] = useState({});
     const [otherItem, setOtherItem] = useState([]);
     const [loading, setLoading] = useState(true);
+    // const [itemId, setItemId] = useState("");
     const {id} = useParams();
 
 
@@ -23,14 +24,15 @@ const ItemPostDetail = () => {
         console.log(json);
         setItemDetail(json.data);
         setLoading(false);
+        // setItemId(json.data.id);
         return json.data;
     }
 
-    // 게시물 상세 정보 불러오기
+    // 게시물 상세 정보 불러오기 - itemId가 변할 때 리렌더링
     useEffect(() => {
         getPageInfo(`http://localhost:8080/item-posts/${id}`)
         .then(itemDetail => setOtherItem(itemDetail.itemPostByUserDtos));
-    }, [])
+    }, [id]) 
 
     return (
         <>
@@ -48,7 +50,7 @@ const ItemPostDetail = () => {
                             showStatus={false}
                             showIndicators={true}
                         >
-                        {itemDetail.imageUrls && itemDetail.imageUrls.map((url) => <div key="url"><img src = {url} alt="pic"></img></div>)}
+                        {itemDetail.imageUrls && itemDetail.imageUrls.map((url) => <div key="url"><img className="picture"src = {url} alt={url}></img></div>)}
                         </Carousel>
                     </div>
                     <div className="item-descrption-box">

@@ -11,22 +11,20 @@ const ItemPostCard= (props) => {
         <Link to={buildProductDetailsUrl(id)}>
           <div className="card card-common">
             <div className="card-imgbox">
-              <Link to={buildProductDetailsUrl(id)}>
-                <img src={thumbnailImg} alt={id} />
-              </Link>
+              <img src={thumbnailImg} alt={id} />
             </div>
             <div className="card-body card-mediabody">
               <h5 className="card-title">{title}</h5>
               <Row className="d-flex justify-content-between">
                 <Col xs="9">
-                  <Card.Text>
+                  <div>
                     <div>
                       <span>{description}</span>
                     </div>
                     <div>
                       <span>{price ? price + "원" : "가격 협의"}</span>
                     </div>
-                  </Card.Text>
+                  </div>
                 </Col>
               </Row>
             </div>

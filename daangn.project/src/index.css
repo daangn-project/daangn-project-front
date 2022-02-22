@@ -9,6 +9,9 @@ html {
   outline: none;
 }
 
+ul{
+  padding: 0;
+}
 
 li{
   list-style: none;
@@ -685,11 +688,18 @@ input textarea {
 /* 상세 페이지*/
 .item-pic{
   width: 450px;
-  height: 350px;
+  height: 450px;
   position: relative;
   float: left;
   text-align: center;
 }
+
+
+.item-pic .picture{
+  max-height: 450px;
+  object-fit:cover;
+}
+
 
 .item-detail{
   display: flex;
@@ -777,4 +787,9 @@ input textarea {
   margin: 0 auto;
   padding-top: 32px;
   position: relative;
+}
+
+.other-item .item-list{
+  padding: 0;
+  justify-content: flex-start;
 }
