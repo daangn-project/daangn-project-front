@@ -37,7 +37,7 @@ const Header = () => {
 
                 <section className="fixed-bar-menu">
                     <div>
-                        <Link to="/marketplace"><MenuBtn text="동네장터"/></Link>
+                        <Link to="/products"><MenuBtn text="동네장터"/></Link>
                         <Link to="/"><MenuBtn text="동네생활"/></Link>
                         <Link to="/"><MenuBtn text="당근채팅"/></Link>
                         <Link to="/login">

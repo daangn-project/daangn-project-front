@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import { useEffect, useState } from "react";
 import React from "react";
 
-const ItemPostCreate = ({ history }) => {
+const ProductCreate = ({ history }) => {
     const [category, setCategory] = useState("");
     const [title, setTitle] = useState("");
     const [description, setDescription] = useState("");
@@ -139,4 +139,4 @@ const ItemPostCreate = ({ history }) => {
 }
 
 
-export default ItemPostCreate;
+export default ProductCreate;

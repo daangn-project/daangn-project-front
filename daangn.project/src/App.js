@@ -5,9 +5,9 @@ import {
 } from "react-router-dom";
 import Home from "./pages/home";
 import Login from "./pages/login";
-import ItemPostMain from "./pages/marketplace/ItemPostMain";
-import ItemPostCreate from "./pages/marketplace/itemPostCreate";
-import ItemPostDetail from "./pages/marketplace/ItemPostDetail";
+import ProductMain from "./pages/product/ProductMain";
+import ProductCreate from "./pages/product/ProductCreate";
+import ProductDetail from "./pages/product/ProductDetail";
 
 function App() {
   return (
@@ -15,9 +15,9 @@ function App() {
     <Routes>
       <Route path='/' element={<Home/>}></Route>
       <Route path='/login' element={<Login/>}></Route>
-      <Route path='/marketplace' element={<ItemPostMain/>}></Route>
-      <Route path='/new-itemposts' element={<ItemPostCreate/>}></Route>
-      <Route path='/item-posts/:id' element={<ItemPostDetail/>}></Route>
+      <Route path='/products' element={<ProductMain/>}></Route>
+      <Route path='/new-itemposts' element={<ProductCreate/>}></Route>
+      <Route path='/item-posts/:id' element={<ProductDetail/>}></Route>
     </Routes>
   </Router>
   )

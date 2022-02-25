@@ -1,8 +1,8 @@
 import Header from "../../components/Header";
-import ItemPostCard from "./itemPostCard";
+import ProductCard from "./ProductCard";
 import { useEffect, useState } from "react";
 
-const ItemPostMain = () => {
+const ProductMain = () => {
     const [itemPosts, setItemPosts] = useState([]);
     const [loading, setLoading] = useState(true);
 
@@ -33,7 +33,7 @@ const ItemPostMain = () => {
                 <div className="item-list">
                     <ul>
                         {itemPosts.map((itemPost) => 
-                            <ItemPostCard key={itemPost.id} id={itemPost.id} writer={itemPost.writer} title={itemPost.title} price={itemPost.price} time = {itemPost.adjustedCreatedDate} description={itemPost.description} thumbnailImg={itemPost.thumbnailImg}
+                            <ProductCard key={itemPost.id} id={itemPost.id} writer={itemPost.writer} title={itemPost.title} price={itemPost.price} time = {itemPost.adjustedCreatedDate} description={itemPost.description} thumbnailImg={itemPost.thumbnailImg}
                         />)}
                     </ul>
                 </div>
@@ -41,4 +41,4 @@ const ItemPostMain = () => {
         </>
     )
 }
-export default ItemPostMain;
+export default ProductMain;

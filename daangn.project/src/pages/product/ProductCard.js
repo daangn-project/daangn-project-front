@@ -4,7 +4,7 @@ import {
   } from '../../common/url-utils';
   import { Link } from 'react-router-dom';
 
-const ItemPostCard= (props) => {
+const ProductCard= (props) => {
   const {id, writer, title, location, description, time, price, thumbnailImg, chat, heart} = props;  
   return (
       <li className='baby-product'>
@@ -54,4 +54,4 @@ const ItemPostCard= (props) => {
     )
 }
 
-export default ItemPostCard;
+export default ProductCard;

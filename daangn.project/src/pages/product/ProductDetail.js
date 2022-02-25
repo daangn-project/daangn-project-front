@@ -3,8 +3,8 @@ import { useParams } from "react-router-dom";
 import "react-responsive-carousel/lib/styles/carousel.min.css"; // requires a loader
 import { Carousel } from 'react-responsive-carousel';
 import Header from "../../components/Header";
-import ItemPostCard from "./itemPostCard";
-const ItemPostDetail = () => {
+import ProductCard from "./ProductCard";
+const ProductDetail = () => {
     const [itemDetail, setItemDetail] = useState({});
     const [otherItem, setOtherItem] = useState([]);
     const [loading, setLoading] = useState(true);
@@ -82,7 +82,7 @@ const ItemPostDetail = () => {
                     <div className="item-list">
                         <ul>
                             {otherItem.map((item) => 
-                                <ItemPostCard key={item.id} id={item.id} title={item.title} price={item.price} time = {item.adjustedCreatedDate} description={item.description} thumbnailImg={item.thumbnailImg}
+                                <ProductCard key={item.id} id={item.id} title={item.title} price={item.price} time = {item.adjustedCreatedDate} description={item.description} thumbnailImg={item.thumbnailImg}
                             />)}
                         </ul>
                     </div>
@@ -93,4 +93,4 @@ const ItemPostDetail = () => {
     )
 }
 
-export default ItemPostDetail;
+export default ProductDetail;
