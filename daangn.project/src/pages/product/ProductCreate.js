@@ -66,7 +66,7 @@ const ProductCreate = ({ history }) => {
 
         formData.append("memberId","1");
         formData.append("title",title);
-        formData.append("category","SPORTS");
+        formData.append("productCategory","SPORTS");
         formData.append("description",description);
 
         fetch("http://localhost:8080/item-posts", {

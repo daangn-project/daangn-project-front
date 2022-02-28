@@ -3,7 +3,7 @@ import ProductCard from "./ProductCard";
 import { useEffect, useState } from "react";
 
 const ProductMain = () => {
-    const [itemPosts, setItemPosts] = useState([]);
+    const [products, setProducts] = useState([]);
     const [loading, setLoading] = useState(true);
 
     async function getItemPostList(url = ''){
@@ -14,7 +14,7 @@ const ProductMain = () => {
             },
         })
         const json = await response.json();
-        setItemPosts(json.data);
+        setProducts(json.data);
         setLoading(false);
     }
 
@@ -32,8 +32,8 @@ const ProductMain = () => {
                 </div>
                 <div className="item-list">
                     <ul>
-                        {itemPosts.map((itemPost) => 
-                            <ProductCard key={itemPost.id} id={itemPost.id} writer={itemPost.writer} title={itemPost.title} price={itemPost.price} time = {itemPost.adjustedCreatedDate} description={itemPost.description} thumbnailImg={itemPost.thumbnailImg}
+                        {products.map((product) => 
+                            <ProductCard key={product.id} id={product.id} writer={product.writer} title={product.title} price={product.price} time = {product.adjustedCreatedDate} description={product.description} thumbnailImg={product.thumbnailImg}
                         />)}
                     </ul>
                 </div>
