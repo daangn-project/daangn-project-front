@@ -61,18 +61,18 @@ const ProductCreate = ({ history }) => {
         const formData = new FormData();
         console.log(image);
         image?.map((img) => {
-            formData.append("files", img);
+            formData.append("images", img);
         });
 
-        formData.append("memberId","1");
+        formData.append("writer","jsh1");
         formData.append("title",title);
         formData.append("productCategory","SPORTS");
         formData.append("description",description);
 
-        fetch("http://localhost:8080/item-posts", {
+        fetch("http://localhost:8080/products", {
             method: "POST",
             headers: {
-                // "Content-Type": `multipart/form-data`,
+                // "Content-Type": `application/json `,
               },
             body: formData,
           })
