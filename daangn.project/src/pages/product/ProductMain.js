@@ -20,7 +20,7 @@ const ProductMain = () => {
 
     // 게시물 상세 정보 불러오기
     useEffect(() => {
-        getItemPostList(`http://localhost:8080/item-posts`);
+        getItemPostList(`http://localhost:8080/products`);
     }, [])
     
     return (
