@@ -31,7 +31,7 @@ const ProductDetail = () => {
     // 게시물 상세 정보 불러오기 - itemId가 변할 때 리렌더링
     useEffect(() => {
         getPageInfo(`http://localhost:8080/products/${id}`)
-        .then(itemDetail => setOtherProduct(itemDetail.itemPostByUserDtos));
+        .then(productDetail => setOtherProduct(productDetail.productByUserDtos));
     }, [id]) 
 
     return (
