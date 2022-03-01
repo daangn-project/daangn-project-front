@@ -9,6 +9,9 @@ html {
   outline: none;
 }
 
+ul{
+  padding: 0;
+}
 
 li{
   list-style: none;
@@ -243,7 +246,7 @@ input textarea {
 
 /* 홈 화면 */
 .home-main-section{
-  padding: 8rem 0;
+  padding: 80px 0 0 0;
 }
 
 .background-pale-green{
@@ -314,13 +317,14 @@ input textarea {
 .copyright{
   width: 1020px;
   margin: 0 auto;
-  position: relative;
+  line-height: 120px;
+  vertical-align: middle;
 }
 
 .info {
   padding: 21px 0 3px 0;
   color: #fff;
-  font-size: 11px;
+  font-size: 14px;
 }
 
 
@@ -685,11 +689,18 @@ input textarea {
 /* 상세 페이지*/
 .item-pic{
   width: 450px;
-  height: 350px;
+  height: 450px;
   position: relative;
   float: left;
   text-align: center;
 }
+
+
+.item-pic .picture{
+  max-height: 450px;
+  object-fit:cover;
+}
+
 
 .item-detail{
   display: flex;
@@ -777,4 +788,9 @@ input textarea {
   margin: 0 auto;
   padding-top: 32px;
   position: relative;
+}
+
+.other-item .item-list{
+  padding: 0;
+  justify-content: flex-start;
 }

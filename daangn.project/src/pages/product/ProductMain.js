@@ -1,9 +1,9 @@
 import Header from "../../components/Header";
-import ItemPostCard from "./itemPostCard";
+import ProductCard from "./ProductCard";
 import { useEffect, useState } from "react";
 
-const ItemPostMain = () => {
-    const [itemPosts, setItemPosts] = useState([]);
+const ProductMain = () => {
+    const [products, setProducts] = useState([]);
     const [loading, setLoading] = useState(true);
 
     async function getItemPostList(url = ''){
@@ -14,13 +14,13 @@ const ItemPostMain = () => {
             },
         })
         const json = await response.json();
-        setItemPosts(json.data);
+        setProducts(json.data);
         setLoading(false);
     }
 
     // 게시물 상세 정보 불러오기
     useEffect(() => {
-        getItemPostList(`http://localhost:8080/item-posts`);
+        getItemPostList(`http://localhost:8080/products`);
     }, [])
     
     return (
@@ -32,8 +32,8 @@ const ItemPostMain = () => {
                 </div>
                 <div className="item-list">
                     <ul>
-                        {itemPosts.map((itemPost) => 
-                            <ItemPostCard key={itemPost} id={itemPost.id} writer={itemPost.writer} title={itemPost.title} price={itemPost.price} time = {itemPost.adjustedCreatedDate} description={itemPost.description} thumbnailImg={itemPost.thumbnailImg}
+                        {products.map((product) => 
+                            <ProductCard key={product.id} id={product.id} writer={product.writer} title={product.title} price={product.price} time = {product.adjustedCreatedDate} description={product.description} thumbnailImg={product.thumbnailImg}
                         />)}
                     </ul>
                 </div>
@@ -41,4 +41,4 @@ const ItemPostMain = () => {
         </>
     )
 }
-export default ItemPostMain;
+export default ProductMain;

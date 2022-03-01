@@ -4,29 +4,27 @@ import {
   } from '../../common/url-utils';
   import { Link } from 'react-router-dom';
 
-const ItemPostCard= (props) => {
+const ProductCard= (props) => {
   const {id, writer, title, location, description, time, price, thumbnailImg, chat, heart} = props;  
   return (
       <li className='baby-product'>
         <Link to={buildProductDetailsUrl(id)}>
           <div className="card card-common">
             <div className="card-imgbox">
-              <Link to={buildProductDetailsUrl(id)}>
-                <img src={thumbnailImg} alt={id} />
-              </Link>
+              <img src={thumbnailImg} alt={id} />
             </div>
             <div className="card-body card-mediabody">
               <h5 className="card-title">{title}</h5>
               <Row className="d-flex justify-content-between">
                 <Col xs="9">
-                  <Card.Text>
+                  <div>
                     <div>
                       <span>{description}</span>
                     </div>
                     <div>
                       <span>{price ? price + "원" : "가격 협의"}</span>
                     </div>
-                  </Card.Text>
+                  </div>
                 </Col>
               </Row>
             </div>
@@ -37,9 +35,11 @@ const ItemPostCard= (props) => {
                 </div>
 
                 <div className="card-info-bottom">
+                  {writer && 
                   <div>
                     <span> 작성자: {writer}</span>
                   </div>
+                  }
                   <div>
                     <span> 관심: 10</span>
                     <span> 채팅: 0</span>
@@ -54,4 +54,4 @@ const ItemPostCard= (props) => {
     )
 }
 
-export default ItemPostCard;
+export default ProductCard;

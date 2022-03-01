@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import { useEffect, useState } from "react";
 import React from "react";
 
-const ItemPostCreate = ({ history }) => {
+const ProductCreate = ({ history }) => {
     const [category, setCategory] = useState("");
     const [title, setTitle] = useState("");
     const [description, setDescription] = useState("");
@@ -61,18 +61,18 @@ const ItemPostCreate = ({ history }) => {
         const formData = new FormData();
         console.log(image);
         image?.map((img) => {
-            formData.append("files", img);
+            formData.append("images", img);
         });
 
-        formData.append("memberId","1");
+        formData.append("writer","jsh1");
         formData.append("title",title);
-        formData.append("category","SPORTS");
+        formData.append("productCategory","SPORTS");
         formData.append("description",description);
 
-        fetch("http://localhost:8080/item-posts", {
+        fetch("http://localhost:8080/products", {
             method: "POST",
             headers: {
-                // "Content-Type": `multipart/form-data`,
+                // "Content-Type": `application/json `,
               },
             body: formData,
           })
@@ -139,4 +139,4 @@ const ItemPostCreate = ({ history }) => {
 }
 
 
-export default ItemPostCreate;
+export default ProductCreate;
