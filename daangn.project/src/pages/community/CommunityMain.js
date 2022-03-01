@@ -1,5 +1,5 @@
 import Header from "../../components/Header";
-import ItemPostCard from "../marketplace/itemPostCard";
+import ProductCard from "../product/ProductCard";
 import { useEffect, useState } from "react";
 
 const CommunityPostMain = () => {
@@ -33,7 +33,7 @@ const CommunityPostMain = () => {
                 <div className="item-list">
                     <ul>
                         {communityPosts.map((communityPost) => 
-                            <ItemPostCard 
+                            <ProductCard 
                             key={communityPost} 
                             id={communityPost.id} 
                             writer={communityPost.writer} 
