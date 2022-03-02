@@ -1,12 +1,12 @@
 import Header from "../../components/Header";
-import ProductCard from "../product/ProductCard";
+import CommunityCard from './CommunityCard';
 import { useEffect, useState } from "react";
 
 const CommunityPostMain = () => {
-    const [communityPosts, setCoummunityPosts] = useState([]);
+    const [communities, setCoummunities] = useState([]);
     const [loading, setLoading] = useState(true);
 
-    async function getCommunityPostList(url = ''){
+    async function getCommunitiesList(url = ''){
         const response = await fetch(url, {
             method: 'GET',
             headers: {
@@ -14,15 +14,16 @@ const CommunityPostMain = () => {
             },
         })
         const json = await response.json();
-        setCoummunityPosts(json.data);
+        setCoummunities(json.data);
         setLoading(false);
     }
 
     // 동네생활 상세 정보 불러오기
     useEffect(() => {
-        getCommunityPostList(`http://localhost:8080/community-posts`);
+        getCommunitiesList(`http://localhost:8080/communities`);
     }, [])
-    
+
+    // console.log(communities)
     return (
         <>
             <Header/>
@@ -32,15 +33,17 @@ const CommunityPostMain = () => {
                 </div>
                 <div className="item-list">
                     <ul>
-                        {communityPosts.map((communityPost) => 
-                            <ProductCard 
-                            key={communityPost} 
-                            id={communityPost.id} 
-                            writer={communityPost.writer} 
-                            title={communityPost.title} 
-                            time = {communityPost.adjustedCreatedDate} 
-                            description={communityPost.description} 
-                            thumbnailImg={communityPost.thumbnailImg}
+                        {communities.map((community) => 
+                            <CommunityCard 
+                            key={community} 
+                            id={community.id} 
+                            writer={community.writer} 
+                            title={community.title} 
+                            communityCategory={community.communityCategory}
+                            time = {community.adjustedCreatedDate} 
+                            description={community.description} 
+                            thumbnailImg={community.thumbnailImg}
+
                         />)}
                     </ul>
                 </div>
