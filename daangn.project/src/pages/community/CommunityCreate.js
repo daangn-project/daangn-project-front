@@ -1,9 +1,10 @@
+
 import Header from "../../components/Header";
 import { Link } from "react-router-dom";
 import { useEffect, useState } from "react";
 import React from "react";
 
-const ProductCreate = ({ history }) => {
+const CommunityCreate = ({ history }) => {
     const [category, setCategory] = useState("");
     const [title, setTitle] = useState("");
     const [description, setDescription] = useState("");
@@ -54,7 +55,7 @@ const ProductCreate = ({ history }) => {
         }
       }
 
-      const createPost = (e) => {
+    const createPost = (e) => {
         const formData = new FormData();
         console.log(image);
         image?.map((img) => {
@@ -66,7 +67,7 @@ const ProductCreate = ({ history }) => {
         formData.append("communityCategory","FOOD");
         formData.append("description",description);
 
-        fetch("http://localhost:8080/community", {
+        fetch("http://localhost:8080/communities", {
             method: "POST",
             headers: {
                 // "Content-Type": `application/json `,
@@ -131,9 +132,8 @@ const ProductCreate = ({ history }) => {
                 </div>
             </div>
         </>
-        
     )
 }
 
 
-export default ProductCreate;
+export default CommunityCreate;

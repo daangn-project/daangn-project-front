@@ -9,7 +9,7 @@ import ProductMain from "./pages/product/ProductMain";
 import ProductCreate from "./pages/product/ProductCreate";
 import ProductDetail from "./pages/product/ProductDetail";
 import CommunityPostMain from "./pages/community/CommunityMain";
-
+import CommunityCreate from "./pages/community/CommunityCreate";
 function App() {
   return (
   <Router>
@@ -19,6 +19,7 @@ function App() {
       <Route path='/community' element={<CommunityPostMain/>}></Route>  
       <Route path='/products' element={<ProductMain/>}></Route>
       <Route path='/new-products' element={<ProductCreate/>}></Route>
+      <Route path='/new-communities' element={<CommunityCreate/>}></Route>
       <Route path='/products/:id' element={<ProductDetail/>}></Route>
     </Routes>
   </Router>
