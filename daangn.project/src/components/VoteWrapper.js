@@ -1,7 +1,7 @@
 import VoteOption from "./VoteOption";
-import { useEffect, useState } from "react";
+import { useEffect, useState,useRef } from "react";
 const VoteWrapper = ({inputNum, inputData, setVoteInputNum,  addVoteInput, deleteVoteInput, handleMultipleChoice, removeVote}) => {
-    const addBtn = document.getElementById('btn_add_poll_choice');
+    const [isClicked , setIsClicked] = useState(false)
 
     // 항목 추가 버튼을 눌렀을 때 VoteOption 추가
     function addVoteOption(e) {
@@ -33,36 +33,42 @@ const VoteWrapper = ({inputNum, inputData, setVoteInputNum,  addVoteInput, delet
         deleteVoteInput(option.id)
     }
 
-    function isMultipleChoice(e){
-        const multichk = e.target
-        if(multichk.value === 'N'){
-            multichk.value = 'Y';
-            multichk.classList.add("check");
-        }
-        else {
-            multichk.value = 'N';
-            multichk.classList.remove("check");
-        }
+    function isMultipleChoice(){
+        isClicked ? setIsClicked(false) :setIsClicked(true)
         handleMultipleChoice();
     }
 
+
+    function handlePressMultipleChoice() {
+        setIsClicked(true)
+        isMultipleChoice()
+    }
+
+    const multipleChoiceCheckBtn = useRef();
+
+    useEffect(()=>{
+        if(isClicked){
+            multipleChoiceCheckBtn.current.classList.add('check')
+        } else {
+            multipleChoiceCheckBtn.current.classList.remove('check')
+        }
+    },[isClicked])
+
     return(
         <div id="poll" className="poll-area">
-            <p className="noti-from-op ico-star">글 등록 이후에는 수정할 수 없습니다.</p>
+            <p className="noti-from-op ico-star" >글 등록 이후에는 투표를 수정할 수 없습니다.</p>
             <ul className="poll-list">
                 {inputData.map((ip) => {
                     return(<VoteOption key={ip.id} ip={ip} handleInputChange={handleInputChange} handleInputRemove={handleInputRemove}/>)
                 })}
-
                 <li id="btn_add_poll_choice" className="add"><button type="button" id="btn_add_choice" className="btn-add" onClick={addVoteOption}>항목 추가</button></li>
-                
             </ul> 
                 
             <div className="fnc">
                 <div className="allow">
                     <span className="check-bx">
                         <div>
-                            <i className="fas fa-check-square fa-2x" value="N" onClick={isMultipleChoice}></i>
+                            <i ref={multipleChoiceCheckBtn} className="fas fa-check-square fa-2x" onClick={handlePressMultipleChoice}></i>
                             <label htmlFor="is_multi_poll" className="inp-lb">복수 선택 허용</label>
                         </div>
                     </span>
@@ -73,10 +79,7 @@ const VoteWrapper = ({inputNum, inputData, setVoteInputNum,  addVoteInput, delet
                 </div>
             </div>
         </div>
-            
     )
 }
 
 export default VoteWrapper;
-
-

@@ -133,7 +133,9 @@ const CommunityCreate = ({ history }) => {
                         <p>
                             <textarea name="text" id = "content" placeholder="내용을 입력하세요." className="smallplaceholder" onChange={(e) => setDescription(e.target.value)}></textarea>
                         </p>
-                        {isVoteArticle ? <VoteWrapper inputNum={inputNum} inputData={inputData} setVoteInputNum= {setVoteInputNum} addVoteInput={addVoteInput} deleteVoteInput={deleteVoteInput} handleMultipleChoice={handleMultipleChoice} removeVote={removeVote}/> : null}
+                        {isVoteArticle ? 
+                            <VoteWrapper inputNum={inputNum} inputData={inputData} setVoteInputNum= {setVoteInputNum} addVoteInput={addVoteInput} deleteVoteInput={deleteVoteInput} handleMultipleChoice={handleMultipleChoice} removeVote={removeVote}/> 
+                        : null}
                         
                         <br/>
                         <ol className="thumbnails">
