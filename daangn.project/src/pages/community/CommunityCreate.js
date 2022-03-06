@@ -3,6 +3,7 @@ import Header from "../../components/Header";
 import { Link } from "react-router-dom";
 import { useEffect, useState } from "react";
 import React from "react";
+import VoteWrapper from "../../components/VoteWrapper";
 
 const CommunityCreate = ({ history }) => {
     const [category, setCategory] = useState("");
@@ -11,18 +12,25 @@ const CommunityCreate = ({ history }) => {
     const [image, setImage] = useState([]);
     const [previewImage, setPreviewImage] = useState([]);
 
+    const [isVoteArticle, setIsVoteArticle] = useState(false);
+    const [inputNum, setInputNum] = useState(2);
+    const [inputData, setInputData] = useState([
+        {id: 'opt-1', 'content': ''},
+        {id: 'opt-2', 'content': ''}
+    ]);
+
+    const [isMultipleChoice, setIsMultipleChoice] = useState(false)
+
+
     const insertImg = (e) => {
         let reader = new FileReader()
-      
         if(e.target.files[0]) {
             reader.readAsDataURL(e.target.files[0])
-          
             setImage([...image, e.target.files[0]])
         }
       
         reader.onloadend = () => {
             const previewImgUrl = reader.result
-      
             if(previewImgUrl) {
                 setPreviewImage([...previewImage, previewImgUrl])
             }
@@ -37,8 +45,7 @@ const CommunityCreate = ({ history }) => {
         setPreviewImage([...imgNameArr])
       }
 
-    const getPreviewImg = () => {
-        console.log(previewImage)
+    const getPreviewImgs = () => {
         if(image === null || image.length === 0) {
           return null;
         } else {
@@ -55,9 +62,37 @@ const CommunityCreate = ({ history }) => {
         }
       }
 
+    function removeVote(){
+        setIsVoteArticle(false);
+    }
+
+    const setVoteInputNum = (num) => {
+        setInputNum(num);
+    }
+    const addVoteInput = (inputData) => {
+        setInputData([...inputData])
+    }
+
+    const deleteVoteInput = (id) => {
+        const newInputData = [...inputData]
+        const removedInput = newInputData.filter((ip) => ip.id !== id);
+        setInputData([...removedInput])
+    }
+
+    const handleMultipleChoice = () => {
+        if(isMultipleChoice) setIsMultipleChoice(false);
+        else setIsMultipleChoice(true);
+    }
+
     const createPost = (e) => {
         const formData = new FormData();
-        console.log(image);
+
+        inputData?.map(input => {
+            const inputJson = {};
+            inputJson.content = input.content;
+            formData.append("content", inputJson)
+        });
+
         image?.map((img) => {
             formData.append("images", img);
         });
@@ -66,7 +101,7 @@ const CommunityCreate = ({ history }) => {
         formData.append("title",title);
         formData.append("communityCategory","FOOD");
         formData.append("description",description);
-
+        formData.append("isMultipleVote", isMultipleChoice);
         fetch("http://localhost:8080/communities", {
             method: "POST",
             headers: {
@@ -77,16 +112,7 @@ const CommunityCreate = ({ history }) => {
             .then((res) => res.json())
             .then((res) => {
               if (res.message === "SUCCESS") return history.push("/");
-            });
-          
-    }
-
-    const changeTitle = (e) => {
-        setTitle(e.target.value);
-    }
-
-    const changeDescription = (e) => {
-        setDescription(e.target.value);
+        });
     }
 
     return (
@@ -103,13 +129,15 @@ const CommunityCreate = ({ history }) => {
                     </div>
                     <br/>
                     <form className="write">
-                        <p><input autoComplete="off" id = "title" placeholder="글 제목" className="title" onChange={changeTitle}/></p>
+                        <p><input autoComplete="off" id = "title" placeholder="글 제목" className="title" onChange={(e) => setTitle(e.target.value)}/></p>
                         <p>
-                            <textarea name="text" id = "content" placeholder="내용을 입력하세요." className="smallplaceholder"  onChange={changeDescription}></textarea>
+                            <textarea name="text" id = "content" placeholder="내용을 입력하세요." className="smallplaceholder" onChange={(e) => setDescription(e.target.value)}></textarea>
                         </p>
+                        {isVoteArticle ? <VoteWrapper inputNum={inputNum} inputData={inputData} setVoteInputNum= {setVoteInputNum} addVoteInput={addVoteInput} deleteVoteInput={deleteVoteInput} handleMultipleChoice={handleMultipleChoice} removeVote={removeVote}/> : null}
+                        
                         <br/>
                         <ol className="thumbnails">
-                            {getPreviewImg()}
+                            {getPreviewImgs()}
                         </ol>
 
                     </form>
@@ -119,7 +147,12 @@ const CommunityCreate = ({ history }) => {
                             <p>사진 추가</p>
                         </label>
                         <input type="file" id="input-file" onChange={insertImg} style={{display:"none"}}/>
-                        
+
+                        <div className="pagination-vote" onClick={() => setIsVoteArticle(true)}>
+                            <span id="btn_attach_vote" className="ico ico-vote"><i className="blind">attach vote</i></span>
+                            <p>투표</p>
+                        </div>
+
                         <div className="pagination-cancel">
                             <i className="fas fa-chevron-left fa-2x"></i>
                             <p>이전으로</p>
