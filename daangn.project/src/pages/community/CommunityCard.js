@@ -6,8 +6,7 @@ import {
   import { Link } from 'react-router-dom';
 
 const CommunityCard= (props) => {
-  const {id, writer, title, communityCategory, description, time, price, thumbnailImg} = props;  
-  console.log(props);
+  const {id, writer, title, communityCategory, description, time, thumbnailImg} = props;  
   return (
       <li className='baby-product'>
         <Link to={buildCommunityDetailsUrl(id)}>
@@ -23,9 +22,6 @@ const CommunityCard= (props) => {
                     <div>
                       <span>{description}</span>
                     </div>
-                    <div>
-                      <span>{price ? price + "원" : "가격 협의"}</span>
-                    </div>
                   </div>
                 </Col>
               </Row>
@@ -35,7 +31,6 @@ const CommunityCard= (props) => {
                 <div>
                   <span> 서울시 마포구 성산2동</span>
                 </div>
-
                 <div className="card-info-bottom">
                   {writer && 
                   <div>
