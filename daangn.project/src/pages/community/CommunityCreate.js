@@ -86,22 +86,24 @@ const CommunityCreate = ({ history }) => {
 
     const createPost = (e) => {
         const formData = new FormData();
-
+        
+        let voteOptions = []; // [{"content":"ABC"}, {"content":"XXX"}...]
         inputData?.map(input => {
-            const inputJson = {};
-            inputJson.content = input.content;
-            formData.append("content", inputJson)
+            voteOptions.push(input.content)
         });
-
-        image?.map((img) => {
-            formData.append("images", img);
-        });
-
-        formData.append("writer","jsh1");
+        image?.map(img => formData.append("images", img));
+        // formData.append("voteSaveDto", JSON.stringify(voteData))
+        formData.append("writer","user");
         formData.append("title",title);
         formData.append("communityCategory","FOOD");
         formData.append("description",description);
         formData.append("isMultipleVote", isMultipleChoice);
+        formData.append("voteOptions", voteOptions);
+        formData.append("isVoteArticle", isVoteArticle);
+        
+		for (var key of formData.entries()) {
+			console.log(key[0] + ', ' + key[1])
+		}
         fetch("http://localhost:8080/communities", {
             method: "POST",
             headers: {
