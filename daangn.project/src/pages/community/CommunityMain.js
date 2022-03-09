@@ -7,7 +7,6 @@ const CommunityPostMain = () => {
   const [communities, setCoummunities] = useState([]);
   const [loading, setLoading] = useState(true);
 
-  // 동네생활 상세 정보 불러오기
   useEffect(() => {
     fetchGet("http://localhost:8080/communities")
       .then((res) => res.json())
