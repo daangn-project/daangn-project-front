@@ -1,7 +1,7 @@
 export function buildProductDetailsUrl(productId) {
-    return `/products/${productId}`;
-  }
+  return `/products/${productId}`;
+}
 
-  export function buildCommunityDetailsUrl(communityId){
-    return `/community/${communityId}`;
-  }
+export function buildCommunityDetailsUrl(communityId) {
+  return `/communities/${communityId}`;
+}
