@@ -10,6 +10,9 @@ import ProductCreate from "./pages/product/ProductCreate";
 import ProductDetail from "./pages/product/ProductDetail";
 import CommunityPostMain from "./pages/community/CommunityMain";
 import CommunityCreate from "./pages/community/CommunityCreate";
+// import CommunityCreate from "./pages/community/CommunityCreate";
+import 'bootstrap/dist/css/bootstrap.min.css';
+
 function App() {
   return (
   <Router>

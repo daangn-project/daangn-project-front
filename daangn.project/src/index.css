@@ -479,6 +479,20 @@ input textarea {
   box-shadow: 0px 4px 12px #bababa;
 }
 
+/* 동네생활 */
+.community-common {
+  height: 350px;  
+  border-radius: 10px;
+  border-bottom: 1px sold #ddd;;
+  overflow: hidden;
+  width: 500px;
+}
+
+.community-common:hover {
+  -webkit-box-shadow: 0px 4px 12px #bababa;
+  box-shadow: 0px 4px 12px #bababa;
+}
+
 .card-common .card-imgbox {
   position: relative;
   padding-top: 92.5%;
@@ -506,6 +520,7 @@ input textarea {
 .card-body{
   padding: 1rem 1rem 0rem 1rem;
 }
+
 
 
 /* 글 작성하기 */

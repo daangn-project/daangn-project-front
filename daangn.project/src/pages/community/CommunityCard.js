@@ -8,12 +8,12 @@ import {
 const CommunityCard= (props) => {
   const {id, writer, title, communityCategory, description, time, thumbnailImg} = props;  
   return (
-      <li className='baby-product'>
+      <li className='container column'>
         <Link to={buildCommunityDetailsUrl(id)}>
-          <div className="card card-common">
-            <div className="card-imgbox">
+          <div className="card community-common">
+            {/* <div className="">
               <img src={thumbnailImg} alt={id} />
-            </div>
+            </div> */}
             <div className="card-body card-mediabody">
               <h5 className="card-title">{title}</h5>
               <Row className="d-flex justify-content-between">
