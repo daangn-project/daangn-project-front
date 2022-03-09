@@ -1,54 +1,96 @@
 import Header from "../../components/Header";
-import { Link } from "react-router-dom";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import React from "react";
 import VoteWrapper from "../../components/VoteWrapper";
 import { fetchPostByForm } from "../../common/fetch";
+import { appendingFormData } from "../../common/CreateForm";
 
 const CommunityCreate = ({ history }) => {
-  const [category, setCategory] = useState("");
-  const [title, setTitle] = useState("");
-  const [description, setDescription] = useState("");
-  const [image, setImage] = useState([]);
-  const [previewImage, setPreviewImage] = useState([]);
+  const [states, setStates] = useState({
+    writer: "jsh1",
+    category: "FOOD",
+    title: "",
+    description: "",
+    images: [],
+    previewImage: [],
+    isVoteArticle: false,
+    isMultipleChoice: false,
+    inputNum: 2,
+    inputData: [
+      { id: "opt-1", content: "" },
+      { id: "opt-2", content: "" },
+    ],
+  });
 
-  const [isVoteArticle, setIsVoteArticle] = useState(false);
-  const [inputNum, setInputNum] = useState(2);
-  const [inputData, setInputData] = useState([
-    { id: "opt-1", content: "" },
-    { id: "opt-2", content: "" },
-  ]);
+  const {
+    writer,
+    category,
+    title,
+    description,
+    images,
+    previewImage,
+    isVoteArticle,
+    inputNum,
+    isMultipleChoice,
+    inputData,
+  } = states;
 
-  const [isMultipleChoice, setIsMultipleChoice] = useState(false);
+  console.log("rerender");
+  const handleInputChange = (id, newInput) => {
+    const newData = inputData.map((data) => {
+      return data.id === id ? { id, content: newInput } : data;
+    });
+    setStates((prev) => {
+      return {
+        ...prev,
+        inputData: [...newData],
+      };
+    });
+  };
 
   const insertImg = (e) => {
     let reader = new FileReader();
     if (e.target.files[0]) {
       reader.readAsDataURL(e.target.files[0]);
-      setImage([...image, e.target.files[0]]);
+      setStates((prev) => {
+        return {
+          ...prev,
+          images: [...prev.images, e.target.files[0]],
+        };
+      });
     }
 
     reader.onloadend = () => {
       const previewImgUrl = reader.result;
       if (previewImgUrl) {
-        setPreviewImage([...previewImage, previewImgUrl]);
+        setStates((prev) => {
+          return {
+            ...prev,
+            previewImage: [...prev.previewImage, previewImgUrl],
+          };
+        });
       }
     };
   };
 
   const deleteImg = (index) => {
-    const imgArr = image.filter((el, idx) => idx !== index);
+    const imgArr = images.filter((el, idx) => idx !== index);
     const imgNameArr = previewImage.filter((el, idx) => idx !== index);
 
-    setImage([...imgArr]);
-    setPreviewImage([...imgNameArr]);
+    setStates((prev) => {
+      return {
+        ...prev,
+        images: [...prev.images, imgArr],
+        previewImage: [...prev.previewImage, imgNameArr],
+      };
+    });
   };
 
   const getPreviewImgs = () => {
-    if (image === null || image.length === 0) {
+    if (images === null || images.length === 0) {
       return null;
     } else {
-      return image.map((el, index) => {
+      return images.map((el, index) => {
         return (
           <>
             <div className="thumbnails-del" onClick={() => deleteImg(index)}>
@@ -66,49 +108,102 @@ const CommunityCreate = ({ history }) => {
   };
 
   function removeVote() {
-    setIsVoteArticle(false);
+    setStates((prev) => {
+      return {
+        ...prev,
+        isVoteArticle: false,
+      };
+    });
   }
 
   const setVoteInputNum = (num) => {
-    setInputNum(num);
+    setStates((prev) => {
+      return {
+        ...prev,
+        inputNum: num,
+      };
+    });
   };
-  const addVoteInput = (inputData) => {
-    setInputData([...inputData]);
+
+  const addVoteInput = (newInputData) => {
+    setStates((prev) => {
+      return {
+        ...prev,
+        inputData: [...prev.inputData, newInputData],
+      };
+    });
   };
 
   const deleteVoteInput = (id) => {
     const newInputData = [...inputData];
     const removedInput = newInputData.filter((ip) => ip.id !== id);
-    setInputData([...removedInput]);
+    setStates((prev) => {
+      return {
+        ...prev,
+        inputData: [...removedInput],
+      };
+    });
   };
 
   const handleMultipleChoice = () => {
-    if (isMultipleChoice) setIsMultipleChoice(false);
-    else setIsMultipleChoice(true);
+    setStates((prev) => {
+      return {
+        ...prev,
+        isMultipleChoice: !prev.isMultipleChoice,
+      };
+    });
   };
 
-  const createPost = (e) => {
-    const formData = new FormData();
-
-    let voteOptions = []; // [{"content":"ABC"}, {"content":"XXX"}...]
+  const createPost = async (e) => {
+    let voteOptions = [];
     inputData?.map((input) => {
       voteOptions.push(input.content);
     });
-    image?.map((img) => formData.append("images", img));
-    // formData.append("voteSaveDto", JSON.stringify(voteData))
-    formData.append("writer", "jsh1");
-    formData.append("title", title);
-    formData.append("communityCategory", "FOOD");
-    formData.append("description", description);
-    formData.append("isMultipleVote", isMultipleChoice);
-    formData.append("voteOptions", voteOptions);
-    formData.append("isVoteArticle", isVoteArticle);
 
-    fetchPostByForm("http://localhost:8080/communities", formData)
+    const data = {
+      writer: writer,
+      communityCategory: category,
+      title,
+      description,
+      isMultipleVote: isMultipleChoice,
+      voteOptions,
+      isVoteArticle,
+    };
+
+    const form = await appendingFormData(data);
+
+    fetchPostByForm("http://localhost:8080/communities", form)
       .then((res) => res.json())
       .then((res) => {
         if (res.message === "SUCCESS") return history.push("/");
       });
+  };
+
+  const setTitle = (title) => {
+    setStates((prev) => {
+      return {
+        ...prev,
+        title,
+      };
+    });
+  };
+
+  const setContent = (content) => {
+    setStates((prev) => {
+      return {
+        ...prev,
+        content,
+      };
+    });
+  };
+
+  const setIsVoteArticle = () => {
+    setStates((prev) => {
+      return {
+        ...prev,
+        isVoteArticle: true,
+      };
+    });
   };
 
   return (
@@ -131,7 +226,9 @@ const CommunityCreate = ({ history }) => {
                 id="title"
                 placeholder="글 제목"
                 className="title"
-                onChange={(e) => setTitle(e.target.value)}
+                onChange={(e) => {
+                  setTitle(e.target.value);
+                }}
               />
             </p>
             <p>
@@ -140,13 +237,16 @@ const CommunityCreate = ({ history }) => {
                 id="content"
                 placeholder="내용을 입력하세요."
                 className="smallplaceholder"
-                onChange={(e) => setDescription(e.target.value)}
+                onChange={(e) => {
+                  setContent(e.target.value);
+                }}
               ></textarea>
             </p>
             {isVoteArticle ? (
               <VoteWrapper
                 inputNum={inputNum}
                 inputData={inputData}
+                handleInputChange={handleInputChange}
                 setVoteInputNum={setVoteInputNum}
                 addVoteInput={addVoteInput}
                 deleteVoteInput={deleteVoteInput}
@@ -170,10 +270,7 @@ const CommunityCreate = ({ history }) => {
               style={{ display: "none" }}
             />
 
-            <div
-              className="pagination-vote"
-              onClick={() => setIsVoteArticle(true)}
-            >
+            <div className="pagination-vote" onClick={setIsVoteArticle}>
               <span id="btn_attach_vote" className="ico ico-vote">
                 <i className="blind">attach vote</i>
               </span>
