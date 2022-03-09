@@ -4,19 +4,26 @@ import { useEffect, useState } from "react";
 import { fetchGet } from "../../common/fetch";
 
 const CommunityPostMain = () => {
-  const [communities, setCoummunities] = useState([]);
-  const [loading, setLoading] = useState(true);
+  const [states, setStates] = useState({
+    communities: [],
+    loading: false,
+  });
+  const { communities, loading } = states;
 
   useEffect(() => {
     fetchGet("http://localhost:8080/communities")
       .then((res) => res.json())
       .then((res) => {
-        setCoummunities(res.data);
-        setLoading(false);
+        setStates((prev) => {
+          return {
+            ...prev,
+            communities: [...prev.communities, ...res.data], // 배열 요소를 추가
+            loading: true,
+          };
+        });
       });
   }, []);
 
-  // console.log(communities)
   return (
     <>
       <Header />
