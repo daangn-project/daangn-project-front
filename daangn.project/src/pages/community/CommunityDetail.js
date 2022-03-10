@@ -24,17 +24,9 @@ const CommunityDetail = () => {
       <Header />
       <section className="wrap">
         <h2>동네생활 상세정보</h2>
-        <div className="item-detail">
-          <div className="item-pic">
-              {communityDetail.imageUrls &&
-                communityDetail.imageUrls.map((url) => (
-                  <div key="url">
-                    <img className="picture" src={url} alt={url}></img>
-                  </div>
-                ))}
-           
-          </div>
-          <div className="item-descrption-box">
+        <hr/>
+        <div className="justify-content-center item-detail">
+          <div className="community-description-box">
             <div className="member">
               <div className="profile">
                 <div className="member-pic">
@@ -45,50 +37,34 @@ const CommunityDetail = () => {
                 </div>
                 <div>
                   <div>{communityDetail.writer}</div>
-                  <div>서울시 서대문구</div>
+                  <div>서울시 서대문구  ∙ {communityDetail.adjustedCreatedDate}</div>
                 </div>
               </div>
-              <div>채팅</div>
             </div>
-            <div className="title">
-              <h2>{communityDetail.title}</h2>
-            </div>
+            <hr/>
             <div className="category">
               <span>{communityDetail.itemCategory}</span>
-            </div>
-            <div className="price">
-              <span>{communityDetail.price}원</span>
             </div>
             <div className="description">
               <p>{communityDetail.description}</p>
             </div>
-            <div className="options">
-              <p>관심 5 조회 5 채팅 1</p>
+            <div className="item-pic">
+              {communityDetail.imageUrls &&
+                communityDetail.imageUrls.map((url) => (
+                  <div key="url">
+                    <img className="picture" src={url} alt={url}></img>
+                  </div>
+                ))}
+          </div>
+          </div>
+        </div>
+        <div className="justify-content-center">
+          <div className="community-card-commentbody">
+            <button className="community-comment-button">공감하기</button>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            <button className="community-comment-button">댓글 2</button>
             </div>
-          </div>
-        </div>
+            </div>
       </section>
-      {/* <section className="more">
-        <hr className="hr-more" />
-        <div className="other-item">
-          <h2>{communityDetail.writer}님의 판매 상품</h2>
-          <div className="item-list">
-            <ul>
-              {otherProduct.map((p) => (
-                <ProductCard
-                  key={p.id}
-                  id={p.id}
-                  title={p.title}
-                  price={p.price}
-                  time={p.adjustedCreatedDate}
-                  description={p.description}
-                  thumbnailImg={p.thumbnailImg}
-                />
-              ))}
-            </ul>
-          </div>
-        </div>
-      </section> */}
     </>
   );
 };

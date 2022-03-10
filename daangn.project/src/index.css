@@ -497,48 +497,62 @@ input textarea {
   border: medium;
 }
 .community-category{
-  font-size: 15px;
+  font-size: 12px;
   font-weight: bold;
-  width: 100px;
-  height: 30px;
-  float: left;
-  padding-top: 3px;
+  color: #979798;
+  width: 60px;
+  height: 20px;
   text-align: center;
-  border: 1px solid black;
+  border: none;
   box-sizing: border-box;
-  background-color: lightgray;
-  font-weight: bold;
+  background-color: #e2e2e2;
+  border-radius: 5px;
 }
 .community-card-title {
   font-size: large;
   font-weight: bold;
 }
 .community-card-body{
-  font-size: large;
   align-items:center;
   float: right;
 }
+.community-card-commentbody{
+  height: 8px;
+  float: left;
+  font-size: 13px;
+  justify-content: center;
+}
 .community-card-description{
   font-size:medium;
+  float: right;
 }
 .community-card-info-bottom{
-  font-size: small;
   align-items:center;
   text-align: left;
+  font-size: 13px;
+  line-height: 1.46;
+  letter-spacing: -0.6px;
+  color: #868e96;
+  justify-content: space-between;
+  display: flex;
+  justify-content: space-between;
 }
 .community-card-time{
   text-align: right;
-  font-size: small;
+  font-size: 13px;
+  line-height: 1.46;
+  letter-spacing: -0.6px;
+  color: #868e96;
 }
 .community-card-comment{
-  font-size: medium;
+  font-size: 15px;
   font-weight: bold;
   vertical-align: bottom;
+  text-align: left;
 }
 .community-comment-button{
-  background-color: lightgray;
-  color: #000;
-  font-weight: bold;  
+ background-color: transparent;
+ border: none;
 }
 .card-common .card-imgbox {
   position: relative;
@@ -790,6 +804,14 @@ input textarea {
   float: right;
   width: 450px;
   font-size: 12px;
+}
+.community-description-box{
+    margin-left: 40px;
+    padding: 10px 0 20px 20px;
+    position: relative;
+    float: right;
+    width: 450px;
+    font-size: 12px;
 }
 
 .item-descrption-box .member{

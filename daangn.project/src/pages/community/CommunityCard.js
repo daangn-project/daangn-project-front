@@ -7,11 +7,9 @@ const CommunityCard = (props) => {
   const {
     id,
     writer,
-    title,
     communityCategory,
     description,
     time,
-    thumbnailImg,
   } = props;
   return (
     <li className="community-common container column mb-3">
@@ -19,26 +17,23 @@ const CommunityCard = (props) => {
         <div className="card community-common">
           <div className="row card-body card-mediabody">
             <div>
-              <p className="community-category">{communityCategory}</p>
+              <button className="community-category mb-3">{communityCategory}</button>
             </div>
             <div className="community-card-description">
               <p>{description}</p>
             </div>
           </div>
-          <div className="flex card-body community-card-body">
+          <div className="card-body community-card-body">
             <div className="community-card-info-bottom">
-              <span> 서울시 마포구 성산2동</span>
-              {writer && <span> ⎮ 작성자 : {writer}</span>}
-            </div>
-            <div className="community-card-time">
-            <span className="community-card-time">{time}</span>
+              {writer && <span>{writer} ∙ 서울시 마포구 성산2동</span>}
+            <span>{time}</span>
             </div>
           </div>
         <hr/>
-          <div className="card-body community-card-body">
-          <div className="community-card-comment">
-            <button className="community-comment-button">공감하기</button>&nbsp;
-            <button className="community-comment-button">댓글달기</button>
+          <div className="card-body community-card-commentbody">
+          <div className="community-card-commentbody">
+            <button className="community-comment-button">공감하기</button>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            <button className="community-comment-button">댓글 2</button>
             </div>
             </div>
         </div>
