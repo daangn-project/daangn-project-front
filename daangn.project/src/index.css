@@ -465,6 +465,7 @@ input textarea {
 
 .card{
   color:black;
+  border: medium;
 }
 
 .card-common {
@@ -481,18 +482,64 @@ input textarea {
 
 /* 동네생활 */
 .community-common {
-  height: 350px;  
-  border-radius: 10px;
-  border-bottom: 1px sold #ddd;;
-  overflow: hidden;
-  width: 500px;
+  height: 250px;  
+  border-radius: 15px;
+  border-bottom: 3px sold #ddd;;
+  width: 800px;
+  text-decoration: none;
+  border: medium;
+  border-color: black;
 }
 
 .community-common:hover {
   -webkit-box-shadow: 0px 4px 12px #bababa;
   box-shadow: 0px 4px 12px #bababa;
+  border: medium;
 }
-
+.community-category{
+  font-size: 15px;
+  font-weight: bold;
+  width: 100px;
+  height: 30px;
+  float: left;
+  padding-top: 3px;
+  text-align: center;
+  border: 1px solid black;
+  box-sizing: border-box;
+  background-color: lightgray;
+  font-weight: bold;
+}
+.community-card-title {
+  font-size: large;
+  font-weight: bold;
+}
+.community-card-body{
+  font-size: large;
+  align-items:center;
+  float: right;
+}
+.community-card-description{
+  font-size:medium;
+}
+.community-card-info-bottom{
+  font-size: small;
+  align-items:center;
+  text-align: left;
+}
+.community-card-time{
+  text-align: right;
+  font-size: small;
+}
+.community-card-comment{
+  font-size: medium;
+  font-weight: bold;
+  vertical-align: bottom;
+}
+.community-comment-button{
+  background-color: lightgray;
+  color: #000;
+  font-weight: bold;  
+}
 .card-common .card-imgbox {
   position: relative;
   padding-top: 92.5%;
