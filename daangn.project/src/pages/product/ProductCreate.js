@@ -3,45 +3,62 @@ import { Link } from "react-router-dom";
 import { useEffect, useState } from "react";
 import React from "react";
 import { fetchPostByForm } from "../../common/fetch";
+import { appendingFormData } from "../../common/CreateForm";
 
 const ProductCreate = ({ history }) => {
-  const [category, setCategory] = useState("");
-  const [title, setTitle] = useState("");
-  const [description, setDescription] = useState("");
-  const [image, setImage] = useState([]);
-  const [previewImage, setPreviewImage] = useState([]);
+  const [states, setStates] = useState({
+    category: "SPORTS",
+    title: "",
+    description: "",
+    images: [],
+    previewImage: [],
+  });
+
+  const { category, title, description, images, previewImage } = states;
 
   const insertImg = (e) => {
     let reader = new FileReader();
-
     if (e.target.files[0]) {
       reader.readAsDataURL(e.target.files[0]);
-
-      setImage([...image, e.target.files[0]]);
+      setStates((prev) => {
+        return {
+          ...prev,
+          images: [...prev.images, e.target.files[0]],
+        };
+      });
     }
 
     reader.onloadend = () => {
       const previewImgUrl = reader.result;
-
       if (previewImgUrl) {
-        setPreviewImage([...previewImage, previewImgUrl]);
+        setStates((prev) => {
+          return {
+            ...prev,
+            previewImage: [...prev.previewImage, previewImgUrl],
+          };
+        });
       }
     };
   };
 
   const deleteImg = (index) => {
-    const imgArr = image.filter((el, idx) => idx !== index);
+    const imgArr = images.filter((el, idx) => idx !== index);
     const imgNameArr = previewImage.filter((el, idx) => idx !== index);
 
-    setImage([...imgArr]);
-    setPreviewImage([...imgNameArr]);
+    setStates((prev) => {
+      return {
+        ...prev,
+        images: [...imgArr],
+        previewImage: [...imgNameArr],
+      };
+    });
   };
 
   const getPreviewImg = () => {
-    if (image === null || image.length === 0) {
+    if (images === null || images.length === 0) {
       return null;
     } else {
-      return image.map((el, index) => {
+      return images.map((el, index) => {
         return (
           <>
             <div className="thumbnails-del" onClick={() => deleteImg(index)}>
@@ -58,18 +75,18 @@ const ProductCreate = ({ history }) => {
     }
   };
 
-  const createPost = (e) => {
-    const formData = new FormData();
-    image?.map((img) => {
-      formData.append("images", img);
-    });
+  const createPost = async (e) => {
+    const data = {
+      writer: "jsh1",
+      productCategory: category,
+      title,
+      description,
+      images,
+    };
 
-    formData.append("writer", "jsh1");
-    formData.append("title", title);
-    formData.append("communityCategory", "FOOD");
-    formData.append("description", description);
+    const form = await appendingFormData(data);
 
-    fetchPostByForm("http://localhost:8080/community", formData)
+    fetchPostByForm("http://localhost:8080/products", form)
       .then((res) => res.json())
       .then((res) => {
         if (res.message === "SUCCESS") return history.push("/");
@@ -77,11 +94,21 @@ const ProductCreate = ({ history }) => {
   };
 
   const changeTitle = (e) => {
-    setTitle(e.target.value);
+    setStates((prev) => {
+      return {
+        ...prev,
+        title: e.target.value,
+      };
+    });
   };
 
   const changeDescription = (e) => {
-    setDescription(e.target.value);
+    setStates((prev) => {
+      return {
+        ...prev,
+        description: e.target.value,
+      };
+    });
   };
 
   return (

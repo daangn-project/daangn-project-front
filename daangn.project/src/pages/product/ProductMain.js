@@ -4,15 +4,23 @@ import { useEffect, useState } from "react";
 import { fetchGet } from "../../common/fetch";
 
 const ProductMain = () => {
-  const [products, setProducts] = useState([]);
-  const [loading, setLoading] = useState(true);
+  const [states, setStates] = useState({
+    products: [],
+    loading: true,
+  });
+  const { products, loading } = states;
 
   useEffect(() => {
     fetchGet("http://localhost:8080/products")
       .then((res) => res.json())
       .then((res) => {
-        setProducts(res.data);
-        setLoading(false);
+        setStates((prev) => {
+          return {
+            ...prev,
+            products: res.data,
+            loading: false,
+          };
+        });
       });
   }, []);
 
