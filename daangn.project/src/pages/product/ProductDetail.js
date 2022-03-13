@@ -6,17 +6,25 @@ import Header from "../../components/Header";
 import ProductCard from "./ProductCard";
 import { fetchGet } from "../../common/fetch";
 const ProductDetail = () => {
-  const [productDetail, setProductDetail] = useState({});
-  const [otherProduct, setOtherProduct] = useState([]);
-  const [loading, setLoading] = useState(true);
+  const [states, setStates] = useState({
+    productDetail: {},
+    otherProduct: [],
+    loading: true,
+  });
+  const { productDetail, otherProduct, loading } = states;
   const { id } = useParams();
 
   useEffect(() => {
     fetchGet(`http://localhost:8080/products/${id}`)
       .then((res) => res.json())
       .then((res) => {
-        setProductDetail(res.data);
-        setLoading(false);
+        setStates((prev) => {
+          return {
+            ...prev,
+            productDetail: res.data,
+            loading: false,
+          };
+        });
       });
   }, [id]);
 

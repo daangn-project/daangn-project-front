@@ -80,8 +80,8 @@ const CommunityCreate = ({ history }) => {
     setStates((prev) => {
       return {
         ...prev,
-        images: [...prev.images, imgArr],
-        previewImage: [...prev.previewImage, imgNameArr],
+        images: [...imgArr],
+        previewImage: [...imgNameArr],
       };
     });
   };
@@ -168,6 +168,7 @@ const CommunityCreate = ({ history }) => {
       isMultipleVote: isMultipleChoice,
       voteOptions,
       isVoteArticle,
+      images,
     };
 
     const form = await appendingFormData(data);
