@@ -3,7 +3,7 @@ import CommunityCard from "./CommunityCard";
 import { useEffect, useState } from "react";
 import { fetchGet } from "../../common/fetch";
 
-const CommunityPostMain = () => {
+const CommunityMain = () => {
   const [states, setStates] = useState({
     communities: [],
     loading: false,
@@ -29,7 +29,7 @@ const CommunityPostMain = () => {
       <Header />
       <section className="home-main-section ">
         <div className="category-header">
-          <h2 className="category-header-title">동네생활</h2>
+          <h2 className="category-header-title mb-5">동네생활</h2>
         </div>
         <div className="item-list">
           <ul>
@@ -51,4 +51,4 @@ const CommunityPostMain = () => {
     </>
   );
 };
-export default CommunityPostMain;
+export default CommunityMain;
