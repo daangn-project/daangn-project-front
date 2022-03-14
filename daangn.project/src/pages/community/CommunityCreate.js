@@ -156,7 +156,7 @@ const CommunityCreate = ({ history }) => {
 
   const createPost = async (e) => {
     let voteOptions = [];
-    inputData?.map((input) => {
+    inputData?.forEach((input) => {
       voteOptions.push(input.content);
     });
 
