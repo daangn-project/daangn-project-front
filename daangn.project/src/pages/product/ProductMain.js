@@ -2,7 +2,6 @@ import Header from "../../components/Header";
 import ProductCard from "./ProductCard";
 import { useEffect, useState } from "react";
 import { fetchGet } from "../../common/fetch";
-
 const ProductMain = () => {
   const [states, setStates] = useState({
     products: [],

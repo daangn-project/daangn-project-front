@@ -4,8 +4,10 @@ import React from "react";
 import VoteWrapper from "../../components/VoteWrapper";
 import { fetchPostByForm } from "../../common/fetch";
 import { appendingFormData } from "../../common/CreateForm";
+import { useNavigate } from "react-router-dom";
 
 const CommunityCreate = ({ history }) => {
+  const navigate = useNavigate();
   const [states, setStates] = useState({
     writer: "jsh1",
     category: "FOOD",
@@ -176,7 +178,10 @@ const CommunityCreate = ({ history }) => {
     fetchPostByForm("http://localhost:8080/communities", form)
       .then((res) => res.json())
       .then((res) => {
-        if (res.message === "SUCCESS") return history.push("/");
+        if (res.status === "OK") {
+          alert("글이 등록되었습니다.");
+          navigate("/communities");
+        }
       });
   };
 

@@ -4,8 +4,10 @@ import { useEffect, useState } from "react";
 import React from "react";
 import { fetchPostByForm } from "../../common/fetch";
 import { appendingFormData } from "../../common/CreateForm";
+import { useNavigate } from "react-router-dom";
 
-const ProductCreate = ({ history }) => {
+const ProductCreate = () => {
+  const navigate = useNavigate();
   const [states, setStates] = useState({
     category: "SPORTS",
     title: "",
@@ -89,7 +91,10 @@ const ProductCreate = ({ history }) => {
     fetchPostByForm("http://localhost:8080/products", form)
       .then((res) => res.json())
       .then((res) => {
-        if (res.message === "SUCCESS") return history.push("/");
+        if (res.status === "OK") {
+          alert("글이 등록되었습니다.");
+          navigate("/products");
+        }
       });
   };
 
