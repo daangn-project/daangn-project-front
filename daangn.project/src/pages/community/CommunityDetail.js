@@ -49,12 +49,22 @@ const CommunityDetail = () => {
               <p>{communityDetail.description}</p>
             </div>
             <div className="item-pic">
+            <Carousel
+              autoPlay={false}
+              showArrows={true}
+              infiniteLoop={true}
+              stopOnHover={false}
+              showThumbs={true}
+              showStatus={false}
+              showIndicators={true}
+            >
               {communityDetail.imageUrls &&
                 communityDetail.imageUrls.map((url) => (
                   <div key="url">
                     <img className="picture" src={url} alt={url}></img>
                   </div>
                 ))}
+            </Carousel>
           </div>
           </div>
         </div>
@@ -63,7 +73,7 @@ const CommunityDetail = () => {
             <button className="community-comment-button">공감하기</button>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
             <button className="community-comment-button">댓글 2</button>
             </div>
-            </div>
+        </div>
       </section>
     </>
   );
