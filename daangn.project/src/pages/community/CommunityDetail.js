@@ -4,7 +4,8 @@ import "react-responsive-carousel/lib/styles/carousel.min.css"; // requires a lo
 import { Carousel } from "react-responsive-carousel";
 import Header from "../../components/Header";
 import { fetchGet } from "../../common/fetch";
-
+import Comment from "../../components/Comment";
+import { Link } from "react-router-dom";
 const CommunityDetail = () => {
   const [communityDetail, setCommunityDetail] = useState({});
   const [loading, setLoading] = useState(true);
@@ -19,12 +20,21 @@ const CommunityDetail = () => {
       });
   }, [id]);
 
+  const handleCommentChange = (newComment) => {
+    setCommunityDetail((prev) => {
+      return {
+        ...prev,
+        commentResponseDtoList: [...prev.commentResponseDtoList, newComment],
+      };
+    });
+  };
+
   return (
     <>
       <Header />
       <section className="wrap">
         <h2>동네생활 상세정보</h2>
-        <hr/>
+        <hr />
         <div className="justify-content-center item-detail">
           <div className="community-description-box">
             <div className="member">
@@ -37,11 +47,13 @@ const CommunityDetail = () => {
                 </div>
                 <div>
                   <div>{communityDetail.writer}</div>
-                  <div>서울시 서대문구  ∙ {communityDetail.adjustedCreatedDate}</div>
+                  <div>
+                    서울시 서대문구 ∙ {communityDetail.adjustedCreatedDate}
+                  </div>
                 </div>
               </div>
             </div>
-            <hr/>
+            <hr />
             <div className="category">
               <span>{communityDetail.itemCategory}</span>
             </div>
@@ -49,30 +61,43 @@ const CommunityDetail = () => {
               <p>{communityDetail.description}</p>
             </div>
             <div className="item-pic">
-            <Carousel
-              autoPlay={false}
-              showArrows={true}
-              infiniteLoop={true}
-              stopOnHover={false}
-              showThumbs={true}
-              showStatus={false}
-              showIndicators={true}
-            >
-              {communityDetail.imageUrls &&
-                communityDetail.imageUrls.map((url) => (
-                  <div key="url">
-                    <img className="picture" src={url} alt={url}></img>
-                  </div>
-                ))}
-            </Carousel>
-          </div>
+              <Carousel
+                autoPlay={false}
+                showArrows={true}
+                infiniteLoop={true}
+                stopOnHover={false}
+                showThumbs={true}
+                showStatus={false}
+                showIndicators={true}
+              >
+                {communityDetail.imageUrls &&
+                  communityDetail.imageUrls.map((url) => (
+                    <div key="url">
+                      <img className="picture" src={url} alt={url}></img>
+                    </div>
+                  ))}
+              </Carousel>
+            </div>
           </div>
         </div>
         <div className="justify-content-center">
           <div className="community-card-commentbody">
-            <button className="community-comment-button">공감하기</button>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            <button className="community-comment-button">공감하기</button>
             <button className="community-comment-button">댓글 2</button>
-            </div>
+          </div>
+        </div>
+        <div style={{ height: "150px" }}></div>
+
+        <Comment
+          postId={communityDetail.id}
+          comments={communityDetail.commentResponseDtoList}
+          handleCommentChange={handleCommentChange}
+        />
+        <div className="clearBothOnly"></div>
+        <div id="goBackListButton" className="pagination">
+          <Link to="/communities" className="list">
+            글 목록
+          </Link>
         </div>
       </section>
     </>

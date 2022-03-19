@@ -1,0 +1,97 @@
+div.comments div.parent {
+  padding: 15px 15px 0 15px;
+  border-top: 1px solid #e3e3e3;
+}
+div.comments div {
+  margin: 0;
+  border: 0;
+  background-color: #fff;
+}
+
+div.comments div.child {
+  margin: -5px 4px 4px 35px;
+  padding: 10px 10px 0 10px;
+  border: 1px solid #e3e3e3;
+  background-color: #f9f9f9;
+}
+
+.writecomment {
+  position: relative;
+  border-top: 1px solid #e3e3e3;
+  background-color: #f8f8f8;
+}
+
+.writecomment.child {
+  margin: 0 4px 4px 35px;
+  border: 1px solid #e3e3e3;
+}
+
+.active {
+  background-color: aliceblue !important;
+}
+
+.writecomment input {
+  margin: 0;
+  padding: 10px 85px 10px 10px;
+  border: 0;
+  width: 100%;
+  height: 40px;
+  line-height: 20px;
+  box-sizing: border-box;
+  color: #262626;
+  font-size: 13px;
+  overflow: hidden;
+  resize: none;
+  background-color: transparent;
+}
+.writecomment ul.option {
+  position: absolute;
+  display: flex;
+  right: 0;
+  top: 0;
+  height: 40px;
+  font-size: 0;
+}
+
+.writecomment ul.option li.submit {
+  background-color: #c62917;
+  background-image: url(https://everytime.kr/images/new/container.articles.write.submit.png);
+}
+
+.writecomment ul.option li.cancel {
+  line-height: 3.2 !important;
+  text-align: center;
+  display: none;
+}
+.visible {
+  display: inline-block !important;
+}
+
+.writecomment ul.option li {
+  display: inline-block;
+  width: 40px;
+  height: 40px;
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-size: 40px 40px;
+  cursor: pointer;
+}
+
+time {
+  padding-bottom: 5px;
+}
+
+time.medium {
+  float: left;
+  margin-bottom: 5px;
+  height: 20px;
+  line-height: 20px;
+  font-size: 12px;
+}
+
+.clearBothOnly {
+  clear: both !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  height: 0 !important;
+}
