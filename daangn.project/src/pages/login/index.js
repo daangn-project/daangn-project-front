@@ -1,16 +1,23 @@
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
+import jwt_decode from "jwt-decode";
+import { useNavigate } from "react-router-dom";
+
 const Login = () => {
-    const URL = "http://localhost:8080/users/login";
+    const URL = "http://localhost:8080/auth/login";
     
     const [id, setId] = useState("");
     const [password, setPassword] = useState("");
 
+    const navigate = useNavigate();
     const handleIdInput = (e) => {setId(e.target.value);}
     const handlePasswordInput = (e) => {setPassword(e.target.value);}
     const handleLoginClick = (e) => {
         e.preventDefault();
         fetch(URL, {
+            headers:{
+                "Content-Type" :"application/json"
+            },
             method: "POST",
             body: JSON.stringify({
                 username : id,
@@ -19,7 +26,17 @@ const Login = () => {
         })
         .then((response) => response.json())
         .then((result) => {
-            console.log("response", result);
+            if (result.token) {
+                // console.log(result.token)
+                let decode = jwt_decode(result.token)
+                // console.log(decode)
+                alert("로그인 성공했습니다");
+                localStorage.setItem('JWTtoken', result.token);
+                navigate("/")
+            } else{
+                alert("회원정보가 없습니다");
+                window.location.reload();
+            }
         })
     }
 
