@@ -9,6 +9,7 @@ import CommunityDetail from "./pages/community/CommunityDetail";
 import CommunityCreate from "./pages/community/CommunityCreate";
 import "bootstrap/dist/css/bootstrap.min.css";
 import Signup from "./pages/signup";
+import Mypage from "./pages/mypage";
 
 function App() {
   return (
@@ -16,6 +17,7 @@ function App() {
       <Routes>
         <Route path="/" element={<Home />}></Route>
         <Route path="/login" element={<Login />}></Route>
+        <Route path="/mypage" element={<Mypage />}></Route>
         <Route path="/signup" element={<Signup />}></Route>
         <Route path="/communities" element={<CommunityMain />}></Route>
         <Route path="/communities/:id" element={<CommunityDetail />}></Route>

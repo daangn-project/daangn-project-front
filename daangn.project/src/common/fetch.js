@@ -2,7 +2,7 @@ export const fetchPostByJson = async (url, body) => {
   return await fetch(url, {
     method: "POST",
     headers: {
-      "Content-Type": "application/json; charset=utf-8",
+      "Content-Type": "application/json;",
       dataType: "json",
     },
     body: JSON.stringify(body),

@@ -9,6 +9,7 @@ const Signup = () => {
     const [email, setEmail] = useState("");
 
     function Checkform() { if( id === "" || password === "" || nickname === "" || email === "" ) { alert("항목을 모두 채워주세요"); return false; } }
+    
     const handleIdInput = (e) => {setId(e.target.value);}
     const handlePasswordInput = (e) => {setPassword(e.target.value);}
     const handleEmailInput = (e) => {setEmail(e.target.value);}
@@ -27,6 +28,7 @@ const Signup = () => {
                 email: email
             })
         })
+        .catch(alert('Email 형식을 맞춰주세요'))
         Checkform()
         .then((response) => response.json())
         .then((result) => {
@@ -47,7 +49,7 @@ const Signup = () => {
                 <form name="loginform" className='login-form'>
                     <input type="text" name="id" className='n-input' title="아이디" value = {id} placeholder="아이디를 입력해주세요." onChange={handleIdInput}/>
                     <input type="text" name="pw" className='n-input' title="닉네임" value={nickname} placeholder="닉네임을 입력해주세요." onChange={handleNicknameInput}/>
-                    <input type="text" name="pw" className='n-input' title="이메일" value={email} placeholder="이메일을 입력해주세요." onChange={handleEmailInput}/>
+                    <input type="email" name="pw" className='n-input' title="이메일" value={email} placeholder="이메일을 입력해주세요." onChange={handleEmailInput}/>
                     <input type="password" name="pw" className='n-input' title="비밀번호" value={password} placeholder="비밀번호를 입력해주세요." onChange={handlePasswordInput}/>
                     <button onClick={handleSignupClick} className='n-btn'>회원가입</button>
                     <div className='login-option'>

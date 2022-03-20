@@ -1,7 +1,15 @@
 import { Link } from 'react-router-dom';
+import { getUserInfo } from '../common/jwt-utils';
 import MenuBtn from './MenuBtn';
 
 const Header = () => {
+
+    const user = getUserInfo();
+    const logout = (e) => {
+        e.preventDefault();
+        localStorage.clear();
+        window.location.href="/";
+    }
     return (
         <header id="fixed-bar" className="fixed-bar-box-shadow">
             <div id="fixed-bar-wrap">
@@ -40,11 +48,23 @@ const Header = () => {
                         <Link to="/products"><MenuBtn text="동네장터"/></Link>
                         <Link to="/communities"><MenuBtn text="동네생활"/></Link>
                         <Link to="/"><MenuBtn text="당근채팅"/></Link>
-                        <Link to="/login">
+                        { !user && <Link to="/login">
                             <button className="fixed-bar-button">
                                 <span className="button-text">로그인</span>
                             </button>
-                        </Link>
+                        </Link>}
+                        { user && <Link to="/mypage">
+                            <button className="fixed-bar-button">
+                                <span className="button-text">{user}</span>
+                            </button>
+                            </Link> 
+                        }
+                        { user && <Link to="/">
+                            <button onClick={logout} className="fixed-bar-button">
+                                <span className="button-text">로그아웃</span>
+                            </button>
+                        </Link>}
+                        
                     </div>
                 </section>
             </div>

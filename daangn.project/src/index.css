@@ -569,6 +569,12 @@ input textarea {
   background-color: transparent;
   border: none;
 }
+
+.mypage-title {
+  font-size: large;
+  text-align: center;
+  font-weight: bold;
+}
 .card-common .card-imgbox {
   position: relative;
   padding-top: 92.5%;
