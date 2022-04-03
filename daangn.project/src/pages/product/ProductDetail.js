@@ -19,9 +19,11 @@ const ProductDetail = () => {
       .then((res) => res.json())
       .then((res) => {
         setStates((prev) => {
+          console.log(res.data);
           return {
             ...prev,
             productDetail: res.data,
+            otherProduct: res.data.productWithMemberDtoList,
             loading: false,
           };
         });
