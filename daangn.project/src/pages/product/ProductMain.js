@@ -26,7 +26,7 @@ const ProductMain = () => {
   return (
     <>
       <Header />
-      <section className="home-main-section ">
+      <section className="home-main-section">
         <div className="category-header">
           <h2 className="category-header-title">창천동</h2>
         </div>
