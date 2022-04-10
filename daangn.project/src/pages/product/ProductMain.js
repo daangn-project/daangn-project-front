@@ -1,27 +1,23 @@
 import Header from "../../components/Header";
 import ProductCard from "./ProductCard";
-import { useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import { fetchGet } from "../../common/fetch";
+import FetchMore from "../../FetchMore";
+
 const ProductMain = () => {
-  const [states, setStates] = useState({
-    products: [],
-    loading: true,
-  });
-  const { products, loading } = states;
+  const [page, setPage] = useState(0);
+  const [loading, setLoading] = useState(false);
+  const [products, setProducts] = useState([]);
 
   useEffect(() => {
-    fetchGet("http://localhost:8080/products")
+    setLoading(true);
+    fetchGet(`http://localhost:8080/products?page=${page}`)
       .then((res) => res.json())
       .then((res) => {
-        setStates((prev) => {
-          return {
-            ...prev,
-            products: res.data,
-            loading: false,
-          };
-        });
+        setProducts((prev) => [...prev, ...res.data]);
+        setLoading(false);
       });
-  }, []);
+  }, [page]);
 
   return (
     <>
@@ -32,7 +28,7 @@ const ProductMain = () => {
         </div>
         <div className="item-list">
           <ul>
-            {products.map((product) => (
+            {products.map((product, idx) => (
               <ProductCard
                 key={product.id}
                 id={product.id}
@@ -45,6 +41,7 @@ const ProductMain = () => {
               />
             ))}
           </ul>
+          <FetchMore loading={page !== 0 && loading} setPage={setPage} />
         </div>
       </section>
     </>
