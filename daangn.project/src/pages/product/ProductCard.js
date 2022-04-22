@@ -2,6 +2,7 @@ import { buildProductDetailsUrl } from "../../common/url-utils";
 import { Link } from "react-router-dom";
 import styled from "styled-components";
 import { SpanContainer } from "../../components/SpanContainer";
+import { StyledLink } from "../../GlobalStyles";
 
 export const ProductList = styled.li`
   position: relative;
@@ -16,8 +17,8 @@ export const Card = styled.div`
   border: medium;
   height: 350px;
   border-radius: 10px;
-  border-bottom: 1px sold #ddd;
   overflow: hidden;
+  border: 1.5px solid #eee;
 
   &:hover {
     -webkit-box-shadow: 0px 4px 12px #bababa;
@@ -57,7 +58,7 @@ const ProductCard = (props) => {
   const showingPrice = price ? price + "원" : "가격 협의";
   return (
     <ProductList>
-      <Link to={buildProductDetailsUrl(id)}>
+      <StyledLink to={buildProductDetailsUrl(id)}>
         <Card>
           <CardImgBox>
             <CardImg src={thumbnailImg} alt={id} />
@@ -80,7 +81,7 @@ const ProductCard = (props) => {
             </div>
           </CardContentBox>
         </Card>
-      </Link>
+      </StyledLink>
     </ProductList>
   );
 };
