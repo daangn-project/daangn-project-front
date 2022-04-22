@@ -4,7 +4,7 @@ import { fetchGet } from "../../common/fetch";
 import FetchMore from "../../FetchMore";
 import { ItemContainer, MainContainer } from "../../GlobalStyles";
 import ProductList from "./ProductList";
-import { MainHedaer } from "../../components/MainHeader";
+import { MainHeader } from "../../components/MainHeader";
 
 const ProductMain = () => {
   const [page, setPage] = useState(0);
@@ -25,7 +25,7 @@ const ProductMain = () => {
     <>
       <Header />
       <MainContainer>
-        <MainHedaer text="창천동" />
+        <MainHeader text="창천동" />
         <ItemContainer>
           <ProductList products={products} />
           <FetchMore loading={page !== 0 && loading} setPage={setPage} />

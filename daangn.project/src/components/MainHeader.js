@@ -9,7 +9,7 @@ export const HeaderWrapper = styled.div`
   margin: 0 auto;
 `;
 
-export const MainHedaer = ({ text }) => {
+export const MainHeader = ({ text }) => {
   return (
     <HeaderWrapper>
       <h2>{text}</h2>

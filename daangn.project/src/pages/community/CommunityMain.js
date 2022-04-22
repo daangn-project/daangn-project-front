@@ -1,7 +1,9 @@
 import Header from "../../components/Header";
-import CommunityCard from "./CommunityCard";
 import { useEffect, useState } from "react";
 import { fetchGet } from "../../common/fetch";
+import { ItemContainer, MainContainer } from "../../GlobalStyles";
+import CommunityList from "./CommunityList";
+import { MainHeader } from "../../components/MainHeader";
 
 const CommunityMain = () => {
   const [states, setStates] = useState({
@@ -27,27 +29,11 @@ const CommunityMain = () => {
   return (
     <>
       <Header />
-      <section className="home-main-section ">
-        <div className="category-header">
-          <h2 className="category-header-title mb-5">동네생활</h2>
-        </div>
-        <div className="item-list">
-          <ul>
-            {communities.map((community) => (
-              <CommunityCard
-                key={community}
-                id={community.id}
-                writer={community.writer}
-                title={community.title}
-                communityCategory={community.communityCategory}
-                time={community.adjustedCreatedDate}
-                description={community.description}
-                thumbnailImg={community.thumbnailImg}
-              />
-            ))}
-          </ul>
-        </div>
-      </section>
+      <MainContainer>
+        <MainHeader>동네생활</MainHeader>
+        <ItemContainer />
+        <CommunityList communities={communities} />
+      </MainContainer>
     </>
   );
 };
