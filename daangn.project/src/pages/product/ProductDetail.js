@@ -1,10 +1,47 @@
+import styled from "styled-components";
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-import "react-responsive-carousel/lib/styles/carousel.min.css"; // requires a loader
+import "react-responsive-carousel/lib/styles/carousel.min.css";
 import { Carousel } from "react-responsive-carousel";
 import Header from "../../components/Header";
-import ProductCard from "./ProductCard";
 import { fetchGet } from "../../common/fetch";
+import {
+  HorizontalLine,
+  ItemContainer,
+  MainContainer,
+  OptionalContainer,
+} from "../../GlobalStyles";
+import ProductList from "./ProductList";
+import ProductDescriptionContainer from "./ProductDescriptionContainer";
+
+export const SectionTitle = styled.h2``;
+
+export const ItemImageContainer = styled.div`
+  width: 450px;
+  height: 450px;
+  position: relative;
+  float: left;
+  text-align: center;
+`;
+
+export const ItemImage = styled.img`
+  max-height: 450px;
+  object-fit: cover;
+`;
+
+export const ItemDetailContainer = styled.div`
+  display: flex;
+  margin-top: 10px;
+  min-height: 550px;
+`;
+
+export const OtherItemContainer = styled.div`
+  width: 1024px;
+  margin: 0 auto;
+  padding: 16px 0;
+  position: relative;
+`;
+
 const ProductDetail = () => {
   const [states, setStates] = useState({
     productDetail: {},
@@ -15,6 +52,12 @@ const ProductDetail = () => {
   const { id } = useParams();
 
   useEffect(() => {
+    setStates((prev) => {
+      return {
+        ...prev,
+        loading: true,
+      };
+    });
     fetchGet(`http://localhost:8080/products/${id}`)
       .then((res) => res.json())
       .then((res) => {
@@ -33,10 +76,10 @@ const ProductDetail = () => {
   return (
     <>
       <Header />
-      <section className="wrap">
-        <h2>게시물 상세정보</h2>
-        <div className="item-detail">
-          <div className="item-pic">
+      <MainContainer>
+        <SectionTitle>게시물 상세정보</SectionTitle>
+        <ItemDetailContainer>
+          <ItemImageContainer>
             <Carousel
               autoPlay={false}
               showArrows={true}
@@ -49,66 +92,23 @@ const ProductDetail = () => {
               {productDetail.imageUrls &&
                 productDetail.imageUrls.map((url) => (
                   <div key="url">
-                    <img className="picture" src={url} alt={url}></img>
+                    <ItemImage src={url} alt={url}></ItemImage>
                   </div>
                 ))}
             </Carousel>
-          </div>
-          <div className="item-descrption-box">
-            <div className="member">
-              <div className="profile">
-                <div className="member-pic">
-                  <img
-                    src="https://d1unjqcospf8gs.cloudfront.net/assets/users/default_profile_80-7e50c459a71e0e88c474406a45bbbdce8a3bf2ed4f2efcae59a064e39ea9ff30.png"
-                    alt={productDetail.writer}
-                  ></img>
-                </div>
-                <div>
-                  <div>{productDetail.writer}</div>
-                  <div>서울시 서대문구</div>
-                </div>
-              </div>
-              <div>채팅</div>
-            </div>
-            <div className="title">
-              <h2>{productDetail.title}</h2>
-            </div>
-            <div className="category">
-              <span>{productDetail.itemCategory}</span>
-            </div>
-            <div className="price">
-              <span>{productDetail.price}원</span>
-            </div>
-            <div className="description">
-              <p>{productDetail.description}</p>
-            </div>
-            <div className="options">
-              <p>관심 5 조회 5 채팅 1</p>
-            </div>
-          </div>
-        </div>
-      </section>
-      <section className="more">
-        <hr className="hr-more" />
-        <div className="other-item">
-          <h2>{productDetail.writer}님의 판매 상품</h2>
-          <div className="item-list">
-            <ul>
-              {otherProduct.map((p) => (
-                <ProductCard
-                  key={p.id}
-                  id={p.id}
-                  title={p.title}
-                  price={p.price}
-                  time={p.adjustedCreatedDate}
-                  description={p.description}
-                  thumbnailImg={p.thumbnailImg}
-                />
-              ))}
-            </ul>
-          </div>
-        </div>
-      </section>
+          </ItemImageContainer>
+          <ProductDescriptionContainer detail={productDetail} />
+        </ItemDetailContainer>
+      </MainContainer>
+      <OptionalContainer>
+        <HorizontalLine />
+        <OtherItemContainer>
+          <SectionTitle>{productDetail.writer}님의 판매 상품</SectionTitle>
+          <ItemContainer>
+            <ProductList products={otherProduct} />
+          </ItemContainer>
+        </OtherItemContainer>
+      </OptionalContainer>
     </>
   );
 };

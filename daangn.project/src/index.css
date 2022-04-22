@@ -10,7 +10,7 @@ html {
 }
 
 ul {
-  padding: 0;
+  padding: 0 !important;
 }
 
 li {
@@ -222,20 +222,6 @@ input textarea {
 }
 
 /* 공통 */
-.wrap {
-  min-height: 720px;
-  width: 980px;
-  margin: 0 auto;
-  padding: 100px 20px 0px 0px;
-  max-width: 1024px;
-}
-
-.more {
-  width: 980px;
-  min-height: 200px;
-  width: 100%;
-}
-
 .other-item {
   width: 1024px;
   margin: 0 auto;
@@ -243,32 +229,7 @@ input textarea {
   position: relative;
 }
 
-.hr-more {
-  overflow: visible;
-  border-image: initial;
-  border-top: 1px solid rgb(196, 196, 196);
-  color: rgb(196, 196, 196);
-  text-align: center;
-  letter-spacing: 0.045em;
-}
-
-.hr-more::after {
-  position: relative;
-  top: -10px;
-  padding: 10px 20px;
-  background: rgb(255, 255, 255);
-  font-size: 12px;
-  color: rgb(128, 128, 128);
-  text-align: center;
-  line-height: 1.5;
-  content: "MORE";
-}
-
 /* 홈 화면 */
-.home-main-section {
-  padding: 80px 0 0 0;
-}
-
 .background-pale-green {
   background-color: #e6f3e6;
 }
@@ -307,14 +268,6 @@ input textarea {
   width: 546px;
   height: 680px;
   background-size: 546px 700px;
-}
-
-.home-main-section .home-main-content {
-  width: 1024px;
-  margin: 0 auto;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
 }
 
 .home-main-title {
@@ -449,51 +402,7 @@ input textarea {
   vertical-align: middle;
 }
 
-/* 상품 카드 */
-.item-list {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 1024px;
-  position: relative;
-  padding-top: 20px;
-  padding: 0 0 0 20px;
-  margin: 0 auto;
-}
 
-.category-header {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 1024px;
-  padding-top: 20px;
-  margin: 0 auto;
-}
-
-.baby-product {
-  position: relative;
-  float: left;
-  padding: 10px 10px 10px 10px;
-  width: 216px;
-  box-sizing: content-box;
-}
-
-.card {
-  color: black;
-  border: medium;
-}
-
-.card-common {
-  height: 350px;
-  border-radius: 10px;
-  border-bottom: 1px sold #ddd;
-  overflow: hidden;
-}
-
-.card-common:hover {
-  -webkit-box-shadow: 0px 4px 12px #bababa;
-  box-shadow: 0px 4px 12px #bababa;
-}
 
 /* 동네생활 */
 .community-common {
@@ -575,33 +484,7 @@ input textarea {
   text-align: center;
   font-weight: bold;
 }
-.card-common .card-imgbox {
-  position: relative;
-  padding-top: 92.5%;
-  overflow: hidden;
-}
 
-.card-common .card-imgbox img {
-  position: absolute;
-  width: 100%;
-  height: 100%;
-  top: 0;
-  -o-object-fit: cover;
-  object-fit: cover;
-  -o-object-position: center;
-  object-position: center;
-  -webkit-transition: 800ms ease;
-  transition: 800ms ease;
-}
-
-.card-info-bottom {
-  display: flex;
-  justify-content: space-between;
-}
-
-.card-body {
-  padding: 1rem 1rem 0rem 1rem;
-}
 
 /* 글 작성하기 */
 @media only screen and (min-width: 641px) {
@@ -789,34 +672,6 @@ input textarea {
 }
 
 /* 상세 페이지*/
-.item-pic {
-  width: 450px;
-  height: 450px;
-  position: relative;
-  float: left;
-  text-align: center;
-}
-
-.item-pic .picture {
-  max-height: 450px;
-  object-fit: cover;
-}
-
-.item-detail {
-  display: flex;
-  margin-top: 10px;
-  min-height: 550px;
-}
-
-.item-descrption-box {
-  border-left: solid 1px #e9ecef;
-  margin-left: 40px;
-  padding: 10px 0 20px 20px;
-  position: relative;
-  float: right;
-  width: 450px;
-  font-size: 12px;
-}
 .community-description-box {
   margin-left: 40px;
   padding: 10px 0 20px 20px;
@@ -826,79 +681,6 @@ input textarea {
   font-size: 12px;
 }
 
-.item-descrption-box .member {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin-bottom: 15px;
-}
-
-.profile {
-  display: flex;
-  align-items: center;
-}
-
-.profile > div > img {
-  width: 40px;
-  height: 40px;
-  object-fit: cover;
-  border-radius: 50%;
-  margin-right: 10px;
-}
-
-.item-descrption-box .title {
-  font-size: 18px;
-  font-weight: bold;
-  width: 380px;
-}
-
-.item-descrption-box .category {
-  margin-top: 4px;
-  font-size: 13px;
-  line-height: 1.46;
-  letter-spacing: -0.6px;
-  color: #868e96;
-}
-
-.item-descrption-box .price {
-  margin-top: 4px;
-  font-size: 17px;
-  font-weight: 600;
-  line-height: 1.76;
-  letter-spacing: -0.6px;
-}
-
-.item-descrption-box .description {
-  margin-bottom: 16px;
-  margin-top: 8px;
-}
-
-.item-descrption-box .description p {
-  font-size: 17px;
-  line-height: 1.6;
-  letter-spacing: -0.6px;
-  margin: 16px 0;
-  word-break: break-all;
-}
-
-.item-descrption-box .options p {
-  font-size: 13px;
-  line-height: 1.46;
-  letter-spacing: -0.6px;
-  color: #868e96;
-}
-
-.item-more {
-  width: 677px;
-  margin: 0 auto;
-  padding-top: 32px;
-  position: relative;
-}
-
-.other-item .item-list {
-  padding: 0;
-  justify-content: flex-start;
-}
 
 /* Community 생성 */
 .ico {

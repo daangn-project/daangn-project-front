@@ -1,8 +1,10 @@
 import Header from "../../components/Header";
-import ProductCard from "./ProductCard";
 import React, { useEffect, useState } from "react";
 import { fetchGet } from "../../common/fetch";
 import FetchMore from "../../FetchMore";
+import { ItemContainer, MainContainer } from "../../GlobalStyles";
+import ProductList from "./ProductList";
+import { MainHedaer } from "../../components/MainHeader";
 
 const ProductMain = () => {
   const [page, setPage] = useState(0);
@@ -22,28 +24,13 @@ const ProductMain = () => {
   return (
     <>
       <Header />
-      <section className="home-main-section">
-        <div className="category-header">
-          <h2 className="category-header-title">창천동</h2>
-        </div>
-        <div className="item-list">
-          <ul>
-            {products.map((product, idx) => (
-              <ProductCard
-                key={product.id}
-                id={product.id}
-                writer={product.writer}
-                title={product.title}
-                price={product.price}
-                time={product.adjustedCreatedDate}
-                description={product.description}
-                thumbnailImg={product.thumbnailImg}
-              />
-            ))}
-          </ul>
+      <MainContainer>
+        <MainHedaer text="창천동" />
+        <ItemContainer>
+          <ProductList products={products} />
           <FetchMore loading={page !== 0 && loading} setPage={setPage} />
-        </div>
-      </section>
+        </ItemContainer>
+      </MainContainer>
     </>
   );
 };
