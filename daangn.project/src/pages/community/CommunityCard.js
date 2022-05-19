@@ -5,10 +5,12 @@ export const CommunityList = styled.li`
   position: relative;
   width: 100%;
   padding: 39px 20px 79px 20px;
-  border-bottom: 1px solid #eee;
+
+  float: left;
+  box-sizing: content-box;
 
   &:hover {
-    box-shadow: 0px 1px 2px #bababa;
+    box-shadow: 0px 1px 1px #bababa;
   }
 `;
 
@@ -91,7 +93,7 @@ const CommunityCard = (props) => {
           <UpperContainer>
             <Title>{title}</Title>
             <Content>{description}</Content>
-            <ThumbnailImg src={thumbnailImg} alt={id} />
+            {thumbnailImg && <ThumbnailImg src={thumbnailImg} alt={id} />}
           </UpperContainer>
 
           <BottomContainer>

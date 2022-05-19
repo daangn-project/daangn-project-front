@@ -1,10 +1,13 @@
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { useState, useRef } from "react";
 import { useNavigate } from "react-router-dom";
+import styled from "styled-components";
 
+export const CommentContainer = styled.div`
+  margin-top: 20px;
+  padding: 26px 0 0;
+`;
 const Comment = ({ postId, comments, handleCommentChange }) => {
   const navigate = useNavigate();
-  console.log(comments);
   const replyInputBox = useRef();
   const commentAddBtn = useRef();
   const commentAddCancelBtn = useRef();
@@ -127,7 +130,7 @@ const Comment = ({ postId, comments, handleCommentChange }) => {
   }
 
   return (
-    <div className="comments">
+    <CommentContainer>
       {comments?.map((comment) => (
         <div
           key={comment.commentOrder}
@@ -206,7 +209,7 @@ const Comment = ({ postId, comments, handleCommentChange }) => {
           ></li>
         </ul>
       </form>
-    </div>
+    </CommentContainer>
   );
 };
 

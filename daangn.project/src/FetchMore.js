@@ -5,24 +5,21 @@ export const MoreBox = styled.div`
   bottom: 0;
   left: 0;
   right: 0;
-
-  ${(props) =>
-    props.loading &&
-    css`
-      display: block;
-      margin-top: 10px;
-      text-align: center;
-      line-height: 28px;
-      border-top: solid 1px #000;
-      border-bottom: solid 1px #000;
-      background-color: #ff9;
-    `}
+  display: block;
+  margin-top: 10px;
+  text-align: center;
+  line-height: 28px;
+  border-top: solid 1px #000;
+  border-bottom: solid 1px #000;
+  background-color: #ff9;
 `;
 
-const FetchMore = ({ loading, setPage }) => {
+const FetchMore = ({ items, setCursor }) => {
   const fetchMoreTrigger = useRef(null);
   const fetchMoreObserver = new IntersectionObserver(([{ isIntersecting }]) => {
-    if (isIntersecting) setPage((prev) => prev + 1);
+    if (isIntersecting) {
+      setCursor((prev) => items.at(-1).id);
+    }
   });
 
   useEffect(() => {
@@ -32,9 +29,9 @@ const FetchMore = ({ loading, setPage }) => {
     return () => {
       if (observerRefValue) fetchMoreObserver.unobserve(observerRefValue);
     };
-  }, []);
+  }, [items]);
 
-  return <MoreBox loading={loading.toString()} ref={fetchMoreTrigger} />;
+  return <MoreBox ref={fetchMoreTrigger} />;
 };
 
 export default FetchMore;

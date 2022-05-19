@@ -7,28 +7,27 @@ import ProductList from "./ProductList";
 import { MainHeader } from "../../components/MainHeader";
 
 const ProductMain = () => {
-  const [page, setPage] = useState(0);
-  const [loading, setLoading] = useState(false);
+  const [cursor, setCursor] = useState(0);
+  const [loading, setLoading] = useState(true);
   const [products, setProducts] = useState([]);
 
   useEffect(() => {
-    setLoading(true);
-    fetchGet(`http://localhost:8080/products?page=${page}`)
+    fetchGet(`http://localhost:8080/products?cursor=${cursor}`)
       .then((res) => res.json())
       .then((res) => {
         setProducts((prev) => [...prev, ...res.data]);
         setLoading(false);
       });
-  }, [page]);
+  }, [cursor]);
 
-  return (
+  return loading ? null : (
     <>
       <Header />
       <MainContainer>
         <MainHeader text="창천동" />
         <ItemContainer>
           <ProductList products={products} />
-          <FetchMore loading={page !== 0 && loading} setPage={setPage} />
+          <FetchMore items={products} setCursor={setCursor} />
         </ItemContainer>
       </MainContainer>
     </>

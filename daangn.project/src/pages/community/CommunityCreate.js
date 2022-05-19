@@ -194,11 +194,11 @@ const CommunityCreate = ({ history }) => {
     });
   };
 
-  const setContent = (content) => {
+  const setDescription = (description) => {
     setStates((prev) => {
       return {
         ...prev,
-        content,
+        description,
       };
     });
   };
@@ -244,7 +244,7 @@ const CommunityCreate = ({ history }) => {
                 placeholder="내용을 입력하세요."
                 className="smallplaceholder"
                 onChange={(e) => {
-                  setContent(e.target.value);
+                  setDescription(e.target.value);
                 }}
               ></textarea>
             </p>

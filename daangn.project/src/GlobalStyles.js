@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import styled from "styled-components";
+import styled, { css } from "styled-components";
 import { createGlobalStyle } from "styled-components";
 
 const GlobalStyles = createGlobalStyle`
@@ -157,4 +157,58 @@ export const StyledLink = styled(Link)`
     color: black;
     text-decoration: none;
   }
+`;
+
+export const Date = styled.span`
+  font-size: 12px;
+  margin-right: 14px;
+  color: #94969b;
+  vertical-align: top;
+`;
+
+export const Like = styled.li`
+  padding: 0 2px;
+  height: 20px;
+  line-height: 20px;
+  color: #a6a6a6;
+  font-size: 12px;
+  background-repeat: no-repeat;
+  background-position: left center;
+  background-size: 11px 11px;
+  cursor: pointer;
+  padding-left: 15px;
+  color: #c62917;
+  background-image: url(https://everytime.kr/images/new/container.articles.vote.png);
+
+  ${(props) =>
+    props.main &&
+    css`
+      background-size: 20px 20px;
+      padding: 0 0 0 25px;
+      font-size: 14px;
+      font-weight: 600;
+    `};
+`;
+
+export const CategoryContainer = styled.div`
+  display: flex;
+  justify-content: space-between;
+  position: relative;
+  height: 33px;
+  padding-top: 9px;
+`;
+
+export const CategoryMenu = styled.div`
+  display: inline-block;
+  position: relative;
+  width: auto !important;
+  height: 31px;
+  margin: 0 12px;
+  font-size: 14px;
+`;
+
+export const CategoryMenuLink = styled(Link)`
+  color: #94969b;
+  text-decoration: none;
+  cursor: pointer;
 `;

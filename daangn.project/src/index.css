@@ -384,15 +384,6 @@ input textarea {
   appearance: none;
 }
 
-/* 상세 페이지*/
-.community-description-box {
-  margin-left: 40px;
-  padding: 10px 0 20px 20px;
-  position: relative;
-  float: right;
-  width: 450px;
-  font-size: 12px;
-}
 
 
 /* Community 생성 */
@@ -724,12 +715,6 @@ time.medium {
   font-size: 12px;
 }
 
-.clearBothOnly {
-  clear: both !important;
-  margin: 0 !important;
-  padding: 0 !important;
-  height: 0 !important;
-}
 
 img.picture.large {
   margin: 0 10px 15px 0;
@@ -811,38 +796,4 @@ p.large {
   padding-bottom: 15px;
   line-height: 20px;
   font-size: 14px;
-}
-
-.pagination > a.list {
-  float: left;
-  background-image: url(https://everytime.kr/images/new/container.articles.pagination.list.png);
-}
-
-.clearBothOnly {
-  clear: both !important;
-  margin: 0 !important;
-  padding: 0 !important;
-  height: 0 !important;
-}
-#goBackListButton {
-  margin-left: 0px;
-  margin-top: 15px;
-}
-
-.pagination > a {
-  display: block;
-  /*margin-top: 5px;*/
-  /*margin-left: 5px;*/
-  padding: 0 10px 0 25px;
-  height: 35px;
-  line-height: 35px;
-  border: 1px solid #c62917;
-  border-radius: 3px;
-  color: #c62917;
-  font-size: 14px;
-  font-weight: bold;
-  background-repeat: no-repeat;
-  background-position: 10px center;
-  background-size: 10px 10px;
-  cursor: pointer;
 }

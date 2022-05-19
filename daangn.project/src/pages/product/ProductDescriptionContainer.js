@@ -25,13 +25,13 @@ export const ProfileInfo = styled.div`
   align-items: center;
 `;
 
-const TitleBox = styled.div`
+export const TitleBox = styled.div`
   font-size: 18px;
   font-weight: bold;
   width: 380px;
 `;
 
-const CategoryBox = styled.div`
+export const CategoryBox = styled.div`
   margin-top: 4px;
   font-size: 13px;
   line-height: 1.46;
@@ -39,12 +39,12 @@ const CategoryBox = styled.div`
   color: #868e96;
 `;
 
-const DescriptionBox = styled.div`
+export const DescriptionBox = styled.div`
   margin-bottom: 16px;
   margin-top: 8px;
 `;
 
-const DesriptionParagraph = styled.p`
+export const DesriptionParagraph = styled.p`
   font-size: 17px;
   line-height: 1.6;
   letter-spacing: -0.6px;
@@ -52,7 +52,7 @@ const DesriptionParagraph = styled.p`
   word-break: break-all;
 `;
 
-const PriceBox = styled.div`
+export const PriceBox = styled.div`
   margin-top: 4px;
   font-size: 17px;
   font-weight: 600;
@@ -60,7 +60,7 @@ const PriceBox = styled.div`
   letter-spacing: -0.6px;
 `;
 
-const OptionBox = styled.div`
+export const OptionBox = styled.div`
   position: absolute;
   right: 0;
   bottom: 0;
@@ -68,13 +68,13 @@ const OptionBox = styled.div`
   font-weight: bold;
 `;
 
-const OptionParagraph = styled.p`
+export const OptionParagraph = styled.p`
   font-size: 13px;
   line-height: 1.46;
   letter-spacing: -0.6px;
   color: #868e96;
 `;
-const ProductDescriptionContainer = ({ detail }) => {
+export const ProductDescriptionContainer = ({ detail }) => {
   return (
     <WrapperBox>
       <ProfileBox>
@@ -85,7 +85,6 @@ const ProductDescriptionContainer = ({ detail }) => {
             <SpanContainer content={["서울시 서대문구"]} />
           </div>
         </ProfileInfo>
-        <div>채팅</div>
       </ProfileBox>
 
       <TitleBox>

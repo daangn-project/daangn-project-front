@@ -6,6 +6,48 @@ import Header from "../../components/Header";
 import { fetchGet } from "../../common/fetch";
 import Comment from "../../components/Comment";
 import { Link } from "react-router-dom";
+import { Date, Like, MainContainer } from "../../GlobalStyles";
+import styled from "styled-components";
+import { Title } from "../product/ProductDetail";
+import {
+  CategoryBox,
+  ProfileBox,
+  ProfileInfo,
+} from "../product/ProductDescriptionContainer";
+import { ProfileImg } from "../../components/ProfileImg";
+import { SpanContainer } from "../../components/SpanContainer";
+
+export const ArticleHeader = styled.div`
+  position: relative;
+  z-index: 105;
+  padding: 25px 20px 19px;
+`;
+
+export const ArticleContentWrapper = styled.div`
+  padding: 0 20px;
+  border-top: 1px solid #eee;
+  word-wrap: break-word;
+  word-break: break-word;
+`;
+
+export const ArticleContent = styled.p`
+  color: #222;
+  font-size: 16px;
+  font-family: "Roboto", "Noto Sans KR", AppleSDGothicNeo-Regular,
+    "Malgun Gothic", "맑은 고딕", dotum, "돋움", sans-serif;
+  line-height: 1.25em;
+  word-wrap: break-word;
+  margin-top: 24px;
+`;
+
+export const Info = styled.div`
+  margin-top: 40px;
+  padding: 0;
+  border-top: 0;
+  display: flex;
+  justify-content: flex-end;
+`;
+
 const CommunityDetail = () => {
   const [communityDetail, setCommunityDetail] = useState({});
   const [loading, setLoading] = useState(true);
@@ -32,74 +74,34 @@ const CommunityDetail = () => {
   return (
     <>
       <Header />
-      <section className="wrap">
-        <h2>동네생활 상세정보</h2>
-        <hr />
-        <div className="justify-content-center item-detail">
-          <div className="community-description-box">
-            <div className="member">
-              <div className="profile">
-                <div className="member-pic">
-                  <img
-                    src="https://d1unjqcospf8gs.cloudfront.net/assets/users/default_profile_80-7e50c459a71e0e88c474406a45bbbdce8a3bf2ed4f2efcae59a064e39ea9ff30.png"
-                    alt={communityDetail.writer}
-                  ></img>
-                </div>
-                <div>
-                  <div>{communityDetail.writer}</div>
-                  <div>
-                    서울시 서대문구 ∙ {communityDetail.adjustedCreatedDate}
-                  </div>
-                </div>
+      <MainContainer>
+        <ArticleHeader>
+          <CategoryBox>{communityDetail.communityCategory}</CategoryBox>
+          <Title>{communityDetail.title}</Title>
+          <ProfileBox>
+            <ProfileInfo>
+              <ProfileImg name={communityDetail.writer} />
+              <div>
+                <SpanContainer content={[`${communityDetail.writer}`]} />
+                <SpanContainer content={["서울시 서대문구"]} />
               </div>
-            </div>
-            <hr />
-            <div className="category">
-              <span>{communityDetail.itemCategory}</span>
-            </div>
-            <div className="description">
-              <p>{communityDetail.description}</p>
-            </div>
-            <div className="item-pic">
-              <Carousel
-                autoPlay={false}
-                showArrows={true}
-                infiniteLoop={true}
-                stopOnHover={false}
-                showThumbs={true}
-                showStatus={false}
-                showIndicators={true}
-              >
-                {communityDetail.imageUrls &&
-                  communityDetail.imageUrls.map((url) => (
-                    <div key="url">
-                      <img className="picture" src={url} alt={url}></img>
-                    </div>
-                  ))}
-              </Carousel>
-            </div>
-          </div>
-        </div>
-        <div className="justify-content-center">
-          <div className="community-card-commentbody">
-            <button className="community-comment-button">공감하기</button>
-            <button className="community-comment-button">댓글 2</button>
-          </div>
-        </div>
-        <div style={{ height: "150px" }}></div>
+            </ProfileInfo>
+          </ProfileBox>
+          <Date>{communityDetail.adjustedCreatedDate}</Date>
+        </ArticleHeader>
 
+        <ArticleContentWrapper>
+          <ArticleContent>{communityDetail.description}</ArticleContent>
+          <Info>
+            <Like main={true}>공감하기</Like>
+          </Info>
+        </ArticleContentWrapper>
         <Comment
           postId={communityDetail.id}
           comments={communityDetail.commentResponseDtoList}
           handleCommentChange={handleCommentChange}
         />
-        <div className="clearBothOnly"></div>
-        <div id="goBackListButton" className="pagination">
-          <Link to="/communities" className="list">
-            글 목록
-          </Link>
-        </div>
-      </section>
+      </MainContainer>
     </>
   );
 };

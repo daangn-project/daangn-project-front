@@ -14,7 +14,12 @@ import {
 import ProductList from "./ProductList";
 import ProductDescriptionContainer from "./ProductDescriptionContainer";
 
-export const SectionTitle = styled.h2``;
+export const Title = styled.h2`
+  margin-top: 15px;
+  font-size: 20px;
+  font-weight: 700;
+  line-height: 28px;
+`;
 
 export const ItemImageContainer = styled.div`
   width: 450px;
@@ -77,7 +82,7 @@ const ProductDetail = () => {
     <>
       <Header />
       <MainContainer>
-        <SectionTitle>게시물 상세정보</SectionTitle>
+        <Title>게시물 상세정보</Title>
         <ItemDetailContainer>
           <ItemImageContainer>
             <Carousel
@@ -103,7 +108,7 @@ const ProductDetail = () => {
       <OptionalContainer>
         <HorizontalLine />
         <OtherItemContainer>
-          <SectionTitle>{productDetail.writer}님의 판매 상품</SectionTitle>
+          <Title>{productDetail.writer}님의 판매 상품</Title>
           <ItemContainer>
             <ProductList products={otherProduct} />
           </ItemContainer>
