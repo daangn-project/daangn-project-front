@@ -5,7 +5,7 @@ import { useNavigate } from "react-router-dom";
 import { fetchPostByJson } from "../../common/fetch";
 
 const Login = () => {
-  const URL = "http://localhost:8080/auth/login";
+  const URL = "http://localhost:8080/users/login";
   const [id, setId] = useState("");
   const [password, setPassword] = useState("");
 

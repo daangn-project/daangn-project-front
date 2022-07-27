@@ -25,3 +25,12 @@ export const fetchGet = async (url) => {
     },
   });
 };
+
+export const fetchPostByPath = async (url, body) => {
+  return await fetch(url, {
+    method: "POST",
+    headers: {
+      "Content-Type": "aplication/json",
+    },
+  });
+};

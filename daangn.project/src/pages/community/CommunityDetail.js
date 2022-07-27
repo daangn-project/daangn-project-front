@@ -3,7 +3,7 @@ import { useParams } from "react-router-dom";
 import "react-responsive-carousel/lib/styles/carousel.min.css"; // requires a loader
 import { Carousel } from "react-responsive-carousel";
 import Header from "../../components/Header";
-import { fetchGet } from "../../common/fetch";
+import { fetchGet, fetchPostByForm, fetchPostByPath } from "../../common/fetch";
 import Comment from "../../components/Comment";
 import { Link } from "react-router-dom";
 import { Date, Like, MainContainer } from "../../GlobalStyles";
@@ -16,7 +16,10 @@ import {
 } from "../product/ProductDescriptionContainer";
 import { ProfileImg } from "../../components/ProfileImg";
 import { SpanContainer } from "../../components/SpanContainer";
+import { fetchPostByJson } from "../../common/fetch";
+import { getUserInfo } from "../../common/jwt-utils";
 
+import { appendingFormData } from "../../common/CreateForm";
 export const ArticleHeader = styled.div`
   position: relative;
   z-index: 105;
@@ -71,6 +74,17 @@ const CommunityDetail = () => {
     });
   };
 
+  const addLike = async (e) => {
+    const data = {
+      username: getUserInfo(),
+    };
+    console.log(data);
+    const form = await appendingFormData(data);
+
+    fetchPostByForm(`http://localhost:8080/like/${id}`, form).then((res) =>
+      console.log(res)
+    );
+  };
   return (
     <>
       <Header />
@@ -93,7 +107,9 @@ const CommunityDetail = () => {
         <ArticleContentWrapper>
           <ArticleContent>{communityDetail.description}</ArticleContent>
           <Info>
-            <Like main={true}>공감하기</Like>
+            <Like onClick={addLike} main={true}>
+              공감 : {communityDetail.likeCount}
+            </Like>
           </Info>
         </ArticleContentWrapper>
         <Comment

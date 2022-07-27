@@ -1,6 +1,7 @@
 import { useState, useRef } from "react";
 import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
+import { getUserInfo } from "../common/jwt-utils";
 
 export const CommentContainer = styled.div`
   margin-top: 20px;
@@ -11,6 +12,8 @@ const Comment = ({ postId, comments, handleCommentChange }) => {
   const replyInputBox = useRef();
   const commentAddBtn = useRef();
   const commentAddCancelBtn = useRef();
+  const userInfo = getUserInfo();
+  console.log(userInfo);
   const [selectedCommentOrder, setSelectedCommentOrder] = useState(-1);
 
   function checkDeleteComment(order, parentNum, childCommentCount, id) {
@@ -20,6 +23,7 @@ const Comment = ({ postId, comments, handleCommentChange }) => {
       return;
     }
   }
+
   function confirmDeleteComment(order, parentNum, childCommentCount, id) {
     // 부모 댓글인 경우
     if (order === parentNum) {
