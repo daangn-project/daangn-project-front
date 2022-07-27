@@ -35,7 +35,13 @@ const CommunityMain = () => {
         setCategories((prev) => [...prev, ...res]);
       });
   }, []);
-  console.log(categories);
+
+  const filterCategory = (e) => {
+    console.log(e.target);
+    if (e.target.text === "전체") setCurrentCategory(0);
+    else setCurrentCategory(e.target.text);
+  };
+
   return loading ? null : (
     <>
       <Header />
@@ -44,12 +50,17 @@ const CommunityMain = () => {
         <CategoryContainer>
           {categories.map((category) => (
             <CategoryMenu>
-              <CategoryMenuLink to="">{category.value}</CategoryMenuLink>
+              <CategoryMenuLink onClick={filterCategory} to="">
+                {category.value}
+              </CategoryMenuLink>
             </CategoryMenu>
           ))}
         </CategoryContainer>
         <ItemContainer>
-          <CommunityList communities={communities} />
+          <CommunityList
+            currentCategory={currentCategory}
+            communities={communities}
+          />
           <FetchMore items={communities} setCursor={setCursor} />
         </ItemContainer>
       </MainContainer>

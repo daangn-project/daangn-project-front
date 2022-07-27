@@ -78,13 +78,17 @@ const CommunityDetail = () => {
     const data = {
       username: getUserInfo(),
     };
-    console.log(data);
     const form = await appendingFormData(data);
 
-    fetchPostByForm(`http://localhost:8080/like/${id}`, form).then((res) =>
-      console.log(res)
-    );
+    fetchPostByForm(`http://localhost:8080/like/${id}`, form).then((res) => {
+      if (res.status === "200") {
+        alert("공감했어요!");
+      } else {
+        alert("이미 공감한 글이에요!");
+      }
+    });
   };
+
   return (
     <>
       <Header />

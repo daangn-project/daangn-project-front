@@ -82,6 +82,8 @@ const CommunityCard = (props) => {
     description,
     thumbnailImg,
     time,
+    likeCount,
+    commentCount,
   } = props;
 
   return (
@@ -98,7 +100,9 @@ const CommunityCard = (props) => {
 
           <BottomContainer>
             <Name>{writer} ∙ 서울시 마포구 성산2동</Name>
-            <Info>공감 2 ∙ 댓글 2 ∙ {time}</Info>
+            <Info>
+              공감 {likeCount} ∙ 댓글 {commentCount} ∙ {time}
+            </Info>
           </BottomContainer>
         </StyledLink>
       </CommunityList>
