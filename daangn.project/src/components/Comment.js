@@ -78,12 +78,11 @@ const Comment = ({ postId, comments, handleCommentChange }) => {
   function addComment() {
     let commentInput = document.getElementById("commentInput").value;
     let newComment = {
-      writer: "jsh1",
+      writer: getUserInfo(),
       content: commentInput,
       communityId: postId,
       parentCommentNum: selectedCommentOrder,
     };
-    console.log(newComment.parentCommentNum);
     fetch("http://localhost:8080/comment", {
       method: "POST",
       headers: {

@@ -5,11 +5,12 @@ import VoteWrapper from "../../components/VoteWrapper";
 import { fetchPostByForm } from "../../common/fetch";
 import { appendingFormData } from "../../common/CreateForm";
 import { useNavigate } from "react-router-dom";
+import { getUserInfo } from "../../common/jwt-utils";
 
 const CommunityCreate = ({ history }) => {
   const navigate = useNavigate();
   const [states, setStates] = useState({
-    writer: "jsh1",
+    writer: getUserInfo(),
     category: "FOOD",
     title: "",
     description: "",
@@ -37,7 +38,6 @@ const CommunityCreate = ({ history }) => {
     inputData,
   } = states;
 
-  console.log("rerender");
   const handleInputChange = (id, newInput) => {
     const newData = inputData.map((data) => {
       return data.id === id ? { id, content: newInput } : data;
