@@ -6,7 +6,6 @@ export const getUserInfo = () => {
     return false;
   } else {
     let decode = jwt_decode(token);
-    console.log(decode);
     return decode.sub;
   }
 };
