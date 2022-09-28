@@ -83,6 +83,7 @@ const Comment = ({ postId, comments, handleCommentChange }) => {
       communityId: postId,
       parentCommentNum: selectedCommentOrder,
     };
+    console.log(newComment);
     fetch("http://localhost:8080/comment", {
       method: "POST",
       headers: {

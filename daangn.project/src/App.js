@@ -10,6 +10,7 @@ import CommunityCreate from "./pages/community/CommunityCreate";
 import "bootstrap/dist/css/bootstrap.min.css";
 import Signup from "./pages/signup";
 import Mypage from "./pages/mypage";
+import ChatMain from "./pages/chat/ChatMain";
 
 function App() {
   return (
@@ -25,6 +26,7 @@ function App() {
         <Route path="/new-products" element={<ProductCreate />}></Route>
         <Route path="/new-communities" element={<CommunityCreate />}></Route>
         <Route path="/products/:id" element={<ProductDetail />}></Route>
+        <Route path="/chat" element={<ChatMain />}></Route>
       </Routes>
     </Router>
   );

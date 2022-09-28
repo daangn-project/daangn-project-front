@@ -16,13 +16,12 @@ import {
 } from "../product/ProductDescriptionContainer";
 import { ProfileImg } from "../../components/ProfileImg";
 import { SpanContainer } from "../../components/SpanContainer";
-import { fetchPostByJson } from "../../common/fetch";
 import { getUserInfo } from "../../common/jwt-utils";
 
 import { appendingFormData } from "../../common/CreateForm";
 export const ArticleHeader = styled.div`
   position: relative;
-  z-index: 105;
+  z-index: 99;
   padding: 25px 20px 19px;
 `;
 

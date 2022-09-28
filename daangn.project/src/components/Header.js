@@ -6,7 +6,8 @@ import LogoutBtn from "./LogoutBtn";
 
 export const NavHeader = styled.header`
   width: 100%;
-  background-color: #fff;
+  display: flex;
+  background-color: rgb(255, 255, 255);
   position: fixed;
   top: 0;
   left: 0;
@@ -134,7 +135,7 @@ const Header = () => {
           <Link to="/communities">
             <MenuBtn text="동네생활" />
           </Link>
-          <Link to="/">
+          <Link to="/chat">
             <MenuBtn text="당근채팅" />
           </Link>
           {!user && (

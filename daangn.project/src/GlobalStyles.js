@@ -103,7 +103,10 @@ input textarea {
 export default GlobalStyles;
 
 export const MainContainer = styled.section`
-  padding: 90px 0 0 0;
+  position: relative;
+  height: 100%;
+  min-height: 860px;
+  padding: 120px 0 0 0;
   width: 1024px;
   margin: 0 auto;
   align-items: center;
